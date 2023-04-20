@@ -1,21 +1,69 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  Text,
+  Button,
+} from 'react-native';
 
-export default function App() {
+const App = () => {
+  const clickHandler = () => {
+    alert('Botão Clicado');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>OLa</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <Text style={styles.titleStyle}>
+          UniRides
+        </Text>
+        <Text style={styles.textStyle}>
+          Inicie Sessão 
+        </Text>
+        <Button title = 'OLa'></Button>
+      </View>
+    </SafeAreaView>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    padding: 10,
+    justifyContent: 'flex-start',
+  },
+  titleStyle: {
+    fontSize: 67,
+    color: 'green',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 15,
+  },
+  textStyle: {
+    fontSize: 16,
+    textAlign: 'center',
+    alignItems: 'flex-start',
+    fontWeight: 'bold',
+    padding: 10,
+  },
+  touchableOpacityStyle: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    right: 30,
+    bottom: 30,
+  },
+  floatingButtonStyle: {
+    resizeMode: 'cover',
+    width: 56,
+    height: 56,
   },
 });
