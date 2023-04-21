@@ -23,13 +23,27 @@ const App = () => {
         <Text style={styles.textStyle}>
           Inicie Sessão 
         </Text>
-        <Button title = 'OLa'></Button>
+        <Button
+                // Some properties given to Button
+                title="Geeks"
+                onPress={clickHandler}
+                style={ok.container}
+            />
       </View>
     </SafeAreaView>
   );
 };
 
 export default App;
+
+const ok = StyleSheet.create({
+  container: {
+      flex: 1,
+      backgroundColor: '#71EC4C',
+      alignItems: 'center',
+      alignContent: 'center',
+  },
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -45,6 +59,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 15,
   },
+  ola: {
+    flex: 1,
+    backgroundColor: '#71EC4C',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
   textStyle: {
     fontSize: 16,
     textAlign: 'center',
