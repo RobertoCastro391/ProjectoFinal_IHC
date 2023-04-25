@@ -9,10 +9,9 @@ import { COLORS, SIZES } from '../../../constants';
 const SignUp = () => {
   const router = useRouter();
   
-  /*const handleCardPress = (item) => {
-    router.push('/job-details/${item.job_id}');
-    setSelectedJob(item.job_id);
-  };*/
+  const handleCardPress = (item) => {
+    router.push('criarContaScreen');
+  };
 
   return (
     <View style={{ marginTop: 50 }}>
@@ -22,7 +21,7 @@ const SignUp = () => {
       </View>
 
       <View>
-          <TouchableOpacity style={styles.EntrarConta}>
+          <TouchableOpacity style={styles.EntrarConta} onPress={handleCardPress} >
               <Text style={styles.EntrarContaTitle}>Criar Conta</Text>
           </TouchableOpacity>
       </View>
