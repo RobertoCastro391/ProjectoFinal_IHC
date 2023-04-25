@@ -6,24 +6,29 @@ const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.xLarge,
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+
   headerTitle: {
-    fontSize: SIZES.large,
-    fontFamily: FONT.medium,
+    fontSize: SIZES.xxLarge,
     color: COLORS.primary,
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
-  headerBtn: {
-    fontSize: SIZES.medium,
-    fontFamily: FONT.medium,
-    color: COLORS.gray,
+
+  EntrarConta: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    backgroundColor: '#5DB075',
+    borderColor: '#fff',
+    borderWidth: 2,
+    borderRadius: 30,
+    marginTop: 45,
+    height: 65,
   },
-  cardsContainer: {
-    marginTop: SIZES.medium,
+
+  EntrarContaTitle: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
-
 export default styles;

@@ -15,9 +15,19 @@ const SignUp = () => {
   };*/
 
   return (
-    <View>
-      <Text>SignUP</Text>
+    <View style={{ marginTop: 50 }}>
+      <View style={styles.container}>
+        <Text style={styles.headerTitle}>Não tens conta?</Text>
+        <Text style={styles.headerTitle}>Cria já uma!</Text>
+      </View>
+
+      <View>
+          <TouchableOpacity style={styles.EntrarConta}>
+              <Text style={styles.EntrarContaTitle}>Criar Conta</Text>
+          </TouchableOpacity>
+      </View>
     </View>
   );
 };
+
 export default SignUp;

@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text, SafeAreaView ,StyleSheet, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView ,StyleSheet, ScrollView, Image } from 'react-native';
 import { useState } from 'react';
 import { useRouter, Stack } from 'expo-router';
 
-import { LogIn, SingUp } from '../components'
+import { LogIn, SingUp, Logo } from '../components'
 
 
 
@@ -16,7 +16,9 @@ const Home = () => {
             
             <Stack.Screen
                 options={{
-                    hearderStyle: { backgroundColor: '#fff' },
+                    header: ({ navigation }) => (
+                        <View style={{ height: 1 }}/>
+                    ),
                     headerShadowVisible: false,
                     headerTitle: ''
                 }}
@@ -24,6 +26,7 @@ const Home = () => {
 
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={{ flex: 1, backgroundColor: '#fff', padding: 16 }}>
+                    <Logo/>
                     <LogIn/>
                     <SingUp/>
                 </View>
