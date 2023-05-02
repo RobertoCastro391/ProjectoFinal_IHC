@@ -1,18 +1,22 @@
+import React from 'react';
 import { StyleSheet } from "react-native";
-
 import { COLORS, FONT, SIZES } from "../../constants";
+
+
 
 const styles = StyleSheet.create({
   
   container: {
     marginTop: SIZES.xxLarge,
-    backgroundColor: 'red'
+  },
+
+  header: {
+    flexDirection: 'row', 
+    alignItems:'center'
   },
 
   headerTitle: {
-    fontSize: SIZES.xxLarge,
-    color: COLORS.primary,
-    textAlign: 'center',
+    fontSize: 30, 
     fontWeight: 'bold'
   },
 
@@ -41,6 +45,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.medium,
   },
 
+  selectDate: {
+    flexDirection: 'row', 
+    alignItems:'center', 
+    marginTop: 32, 
+    justifyContent: 'center'
+  },
+
+  title: {
+    color: '#BDBDBD', 
+    fontSize: 25, 
+    fontWeight: 'bold'
+  },
+
+  title2: {
+    color: '#BDBDBD', 
+    fontSize: 16, 
+    fontWeight: 'bold'
+  },
+
+  checkBox: {
+    margin: 8, 
+    width: 30, 
+    height: 30,
+    borderColor: '#BDBDBD'
+  },
+
+  genderIcon: {
+    width: 45,
+    height: 45,
+  },
+
   EntrarConta: {
     justifyContent: 'center',
     textAlign: 'center',
@@ -48,7 +83,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 2,
     borderRadius: 30,
-    marginTop: 45,
+    marginTop: 40,
     height: 65,
   },
 
@@ -56,14 +91,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-  },
-
-  EsqucerPassword: {
-    color: '#5DB075',
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
   }
+
 });
 
 export default styles;

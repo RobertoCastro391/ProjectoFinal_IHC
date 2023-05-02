@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView ,StyleSheet, ScrollView, Image } from 'react-native';
-import { useState } from 'react';
+import React from 'react';
+import { View, SafeAreaView, ScrollView } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
 
 import { CriarConta } from '../components'
@@ -18,13 +18,11 @@ const criarConta = () => {
                     headerTitle: ''
                 }}
             />
-
-            <ScrollView showsVerticalScrollIndicator={false} >
+            <ScrollView showsVerticalScrollIndicator={true} >
                 <View style={{ flex: 1, backgroundColor: '#fff', padding: 16 }}>
                     <CriarConta />
                 </View>
             </ScrollView>
-
         </SafeAreaView>
     )
 }

@@ -5,8 +5,6 @@ import { useRouter, Stack } from 'expo-router';
 
 import { LogIn, SingUp, Logo } from '../components'
 
-
-
 const Home = () => {
 
     const router = useRouter();
@@ -31,9 +29,7 @@ const Home = () => {
                     <SingUp/>
                 </View>
             </ScrollView>
-
         </SafeAreaView>
-        
     )
 }
 export default Home;

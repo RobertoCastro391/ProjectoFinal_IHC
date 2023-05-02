@@ -1,10 +1,8 @@
-import { useState } from "react";
+import React from 'react';
 import { useRouter } from "expo-router";
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from "./SignUp_Style";
-import { COLORS, SIZES } from '../../../constants';
-
 
 const SignUp = () => {
   const router = useRouter();
