@@ -6,9 +6,13 @@ import Logo from "./home/logo/Logo"
 // Criar conta screen
 import CriarConta from './criarConta/CriarConta'
 
+// initial Page screen
+import InitialPage1 from "./initialPage/InitialPage1";
+
 export {
   LogIn,
   SingUp,
   Logo,
-  CriarConta
+  CriarConta,
+  InitialPage1
 };

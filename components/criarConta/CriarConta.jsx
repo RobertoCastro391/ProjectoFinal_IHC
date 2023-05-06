@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from "expo-router";
-import DatePicker from 'react-native-datepicker';
+import DateTimePicker from "@react-native-community/datetimepicker";
 import Checkbox from 'expo-checkbox';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -128,31 +128,15 @@ const CriarConta = () => {
           </View>
 
           <View>
-            <DatePicker
-              style={styles.datePickerStyle}
-              date={date} //initial date from state
-              mode="date" //The enum of date, datetime and time
-              placeholder="Insira uma data"
-              format="DD-MM-YYYY"
-              minDate="01-01-1950"
-              maxDate="01-01-2023"
-              confirmBtnText="Confirmar"
-              cancelBtnText="Cancelar"
-              customStyles={{
-                dateInput: {
-                  marginLeft: 36,
-                },
-                dateIcon: {
-                  //display: 'none',
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0,
-                },
-              }}
-              onDateChange={(date) => {
+            <DateTimePicker
+              value= { new Date()} //initial date from state
+              dateFormat='day month year'
+              minimumDate={new Date(1990, 0, 1)}
+              maximumDate={new Date(2023, 4, 5)}
+              onChange={(date) => {
                 setDate(date);
               }}
+
             />
           </View>
         </View>

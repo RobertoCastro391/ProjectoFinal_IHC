@@ -8,9 +8,13 @@ import styles from "./LogIn_style";
 const LogIn = () => {
   
   const router = useRouter();
+
+  const handleCardPress = (item) => {
+    router.push('initialPage');
+  };
   
   return (
-      <View style={{ marginTop: 30 }}>
+      <View style={{ marginTop: 1 }}>
         <View style={styles.container}>
           <Text style={styles.headerTitle}>Entra na tua conta</Text>
         </View>
@@ -35,7 +39,7 @@ const LogIn = () => {
         </View>
         
         <View>
-          <TouchableOpacity style={styles.EntrarConta}>
+          <TouchableOpacity style={styles.EntrarConta}  onPress={handleCardPress} >
               <Text style={styles.EntrarContaTitle}>Entar na conta</Text>
           </TouchableOpacity>
         </View>
@@ -43,6 +47,8 @@ const LogIn = () => {
         <View style={{ marginTop: 8 }}>
           <TouchableOpacity>
             <Text style={styles.EsqucerPassword}>Esqueceste-te da password?</Text>
+      
+          
           </TouchableOpacity>
         </View>
       </View>

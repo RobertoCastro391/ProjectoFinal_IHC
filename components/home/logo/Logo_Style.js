@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
   },
   
   Image: {
-    height: 65,
-    width: 250
+    height: 80
   }
 });
 
