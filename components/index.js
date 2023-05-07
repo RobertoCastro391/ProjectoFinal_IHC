@@ -7,12 +7,28 @@ import Logo from "./home/logo/Logo"
 import CriarConta from './criarConta/CriarConta'
 
 // initial Page screen
-import InitialPage1 from "./initialPage/InitialPage1";
+import InitialPage from "./initialPage/InitialPage";
+
+// footer 
+import Footer from "./footer/Footer";
+
+// Menssge screen
+import Message from "./message/MessagePage";
+
+// Notification screen
+import Notification from "./notification/Notification";
+
+// Account Info screen
+import Account from "./account/Account";
 
 export {
   LogIn,
   SingUp,
   Logo,
   CriarConta,
-  InitialPage1
+  InitialPage,
+  Footer,
+  Message,
+  Notification,
+  Account,
 };

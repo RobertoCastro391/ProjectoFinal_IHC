@@ -73,12 +73,12 @@ const CriarConta = () => {
   return (
     <View>
       <View style = {styles.header}>
-        <View>
+        <View style = {{ flex: 0, alignItems: 'flex-start' }} >
           <TouchableOpacity onPress={() => router.back()}>
             <Image source={require('../../assets/icons/left.png')} />
           </TouchableOpacity>
         </View>
-        <View style={{ marginLeft: 58 }}>
+        <View style={{ flex: 1, alignItems: 'center' }}>
           <Text style={styles.headerTitle}>Criar Conta</Text>
         </View>
       </View>
@@ -136,7 +136,6 @@ const CriarConta = () => {
               onChange={(date) => {
                 setDate(date);
               }}
-
             />
           </View>
         </View>

@@ -32,5 +32,30 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+
+  dropdown: {
+    height: 45,
+    width: '90%',
+    marginLeft: 10, 
+    borderColor: 'black',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  
+  placeholderStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+  selectedTextStyle: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+
+  inputSearchStyle: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
 });
 export default styles;

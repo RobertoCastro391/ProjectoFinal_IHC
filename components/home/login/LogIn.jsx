@@ -10,7 +10,7 @@ const LogIn = () => {
   const router = useRouter();
 
   const handleCardPress = (item) => {
-    router.push('initialPage');
+    router.push('initialPageScreen');
   };
   
   return (
