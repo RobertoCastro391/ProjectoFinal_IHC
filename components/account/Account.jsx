@@ -11,17 +11,18 @@ const Account = () => {
   return (
     <View>
       
-      <View style = {styles.header} >
-        <View style = {{ flex: 0, alignItems: 'flex-start' }} >
-            <TouchableOpacity onPress={() => router.back()}>
-              <Text style = { styles.VoltarButton } >Voltar</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', marginRight: 35 }}>
-            <Text style={styles.headerTitle}>Informações de Conta</Text>
-          </View>
+      
+      <View style = {{ flex: 0, alignItems: 'flex-start' }} >
+        <TouchableOpacity onPress={() => router.back()}>
+          <Text style = { styles.VoltarButton }>Voltar</Text>
+        </TouchableOpacity>
       </View>
-
+          
+      
+      <View style={{ alignItems: 'center', marginTop: 10 }}>
+        <Text style={styles.headerTitle}>Informações de Conta</Text>
+      </View>
+      
       <View style = {styles.header} >
         <Text>
           Implementar aqui a cena das Informações de conta

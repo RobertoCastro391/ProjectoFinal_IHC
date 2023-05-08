@@ -47,8 +47,6 @@ const LogIn = () => {
         <View style={{ marginTop: 8 }}>
           <TouchableOpacity>
             <Text style={styles.EsqucerPassword}>Esqueceste-te da password?</Text>
-      
-          
           </TouchableOpacity>
         </View>
       </View>

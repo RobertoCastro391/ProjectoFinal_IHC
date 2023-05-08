@@ -129,7 +129,7 @@ const CriarConta = () => {
 
           <View>
             <DateTimePicker
-              value= { new Date()} //initial date from state
+              value={new Date(1990, 0, 1)} //initial date from state
               dateFormat='day month year'
               minimumDate={new Date(1990, 0, 1)}
               maximumDate={new Date(2023, 4, 5)}

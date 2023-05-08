@@ -84,8 +84,9 @@ const InitialPage = () => {
                 setValue(item.value);
               }}
 
-            />
-          
+            >
+              
+            </Dropdown>
           </View>    
         </View>
 
