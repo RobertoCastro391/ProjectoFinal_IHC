@@ -21,6 +21,8 @@ import Notification from "./notification/Notification";
 // Account Info screen
 import Account from "./account/Account";
 
+import Createoffer from "./createOffer/Createoffer";
+
 export {
   LogIn,
   SingUp,
@@ -31,4 +33,5 @@ export {
   Message,
   Notification,
   Account,
+  Createoffer,
 };

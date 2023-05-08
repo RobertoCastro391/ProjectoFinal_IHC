@@ -11,6 +11,10 @@ const SignUp = () => {
     router.push('criarContaScreen');
   };
 
+  const handleCardPress2 = (item) => {
+    router.push('createOfferScreen');
+  };
+
   return (
     <View style={{ marginTop: 50 }}>
       <View style={styles.container}>
@@ -23,6 +27,14 @@ const SignUp = () => {
               <Text style={styles.EntrarContaTitle}>Criar Conta</Text>
           </TouchableOpacity>
       </View>
+
+      <View>
+          <TouchableOpacity style={styles.EntrarConta} onPress={handleCardPress2} >
+              <Text style={styles.EntrarContaTitle}>Criar Conta</Text>
+          </TouchableOpacity>
+      </View>
+
+      
     </View>
   );
 };
