@@ -40,7 +40,7 @@ const LogIn = () => {
         
         <View>
           <TouchableOpacity style={styles.EntrarConta}  onPress={handleCardPress} >
-              <Text style={styles.EntrarContaTitle}>Entar na conta</Text>
+              <Text style={styles.EntrarContaTitle}>Entrar na conta</Text>
           </TouchableOpacity>
         </View>
 

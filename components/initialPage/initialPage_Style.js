@@ -57,5 +57,35 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold'
   },
+
+  MainContainer: {
+    flex: 1,
+    padding: 6,
+    alignItems: 'center',
+    backgroundColor: 'white'
+  },
+ 
+  text: {
+    fontSize: 25,
+    color: 'red',
+    padding: 3,
+    marginBottom: 10,
+    textAlign: 'center'
+  },
+ 
+  // Style for iOS ONLY...
+  datePicker: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    width: 320,
+    height: 260,
+    display: 'flex',
+  },
+
+  card: {
+    backgroundColor: '#E8E8E8', 
+    borderRadius: 8
+  },
+
 });
 export default styles;

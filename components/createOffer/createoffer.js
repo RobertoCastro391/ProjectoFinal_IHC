@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../../constants";
 
 
+
 const styles = StyleSheet.create({
   
     container: {
@@ -120,6 +121,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold'
       },
+    map:{
+      flex: 1,
+      width: '100%',
+    }
     
   
   });

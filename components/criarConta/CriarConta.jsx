@@ -2,16 +2,19 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from "expo-router";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Checkbox from 'expo-checkbox';
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./CriarConta_Style";
+//import "react-datepicker/dist/react-datepicker.css";
 
 const CriarConta = () => {
 
   const router = useRouter();
-  const [date, setDate] = useState('01-01-2000');
+  
+  const [datePicker, setDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
 
   const [isCheckedMale, setCheckedMale] = useState(false);
   const [isCheckedFemale, setCheckedFemale] = useState(false);
@@ -65,10 +68,18 @@ const CriarConta = () => {
     }
   };
 
-  // const handleCardPress = (item) => {
-  //   router.push('criarContaScreen');
-  // };
-  // codigo da pagina a redirezionar ainda por implementar
+  const handleCardPress = (item) => {
+    router.push('criarContaScreen');
+  };
+  
+  function showDatePicker() {
+    setDatePicker(true);
+  };
+
+  function onDateSelected(event, value) {
+    setDate(value);
+    setDatePicker(false);
+  };
 
   return (
     <View>
@@ -128,15 +139,17 @@ const CriarConta = () => {
           </View>
 
           <View>
-            <DateTimePicker
-              value={new Date(1990, 0, 1)} //initial date from state
-              dateFormat='day month year'
-              minimumDate={new Date(1990, 0, 1)}
-              maximumDate={new Date(2023, 4, 5)}
-              onChange={(date) => {
-                setDate(date);
-              }}
-            />
+            <TouchableOpacity onPress={showDatePicker}>
+              <Text>{date.toLocaleDateString()}</Text>
+            </TouchableOpacity>
+            {datePicker && (
+              <DateTimePicker
+                value={date}
+                mode={'date'}
+                display="default"
+                onChange={onDateSelected}
+              />
+            )}
           </View>
         </View>
 
@@ -212,7 +225,7 @@ const CriarConta = () => {
         </View>
 
         <View>
-            <TouchableOpacity style={styles.EntrarConta} /*onPress={handleCardPress}*/>
+            <TouchableOpacity style={styles.EntrarConta} onPress={handleCardPress}>
                 <Text style={styles.EntrarContaTitle}>Criar Conta</Text>
             </TouchableOpacity>
         </View>
