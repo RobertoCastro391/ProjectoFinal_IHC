@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView } from 'react-native';
+import { View, SafeAreaView, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { Stack } from 'expo-router';
 
 import { Message, Footer } from '../components'
@@ -17,7 +17,7 @@ const messageScreen = () => {
                 }}
             />
             <ScrollView showsVerticalScrollIndicator={true} >
-                <View style={{ flex: 1, backgroundColor: '#fff', padding: 16 }}>
+                <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
                     <Message />
                 </View>
             </ScrollView>

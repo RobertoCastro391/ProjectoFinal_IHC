@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from "expo-router";
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
@@ -11,7 +11,12 @@ const LogIn = () => {
 
   const handleCardPress = (item) => {
     router.push('initialPageScreen');
+    console.log('Email:', email);
+    console.log('Password:', password);
   };
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   
   return (
       <View style={{ marginTop: 1 }}>
@@ -24,6 +29,8 @@ const LogIn = () => {
             <TextInput
               style={styles.searchInput}
               placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
         </View>
@@ -34,6 +41,8 @@ const LogIn = () => {
               style={styles.searchInput}
               placeholder="Password"
               secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
             />
           </View>
         </View>

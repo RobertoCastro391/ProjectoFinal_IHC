@@ -7,6 +7,7 @@ import Checkbox from 'expo-checkbox';
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./CriarConta_Style";
+import { set } from 'react-native-reanimated';
 //import "react-datepicker/dist/react-datepicker.css";
 
 const CriarConta = () => {
@@ -24,6 +25,26 @@ const CriarConta = () => {
   const [hasImage, setHasImage] = useState(null);
 
   const [isCheckedNewsletter, setCheckedNewsletter] = useState(false);
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [apelido, setApelido] = useState('');
+  const [instituicao, setInstituicao] = useState('');
+  const [genero, setGenero] = useState('');
+
+  const handleCardPress = (item) => {
+    router.push('initialPageScreen');
+    console.log('Nome:', name);
+    console.log('Apelido:', apelido);
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Data de Nascimento:', date);
+    console.log('Instituição:', instituicao);
+    console.log('Genero:', genero);
+    console.log('Imagem:', image);
+    console.log('Newsletter:', isCheckedNewsletter);
+  };
 
   useEffect(() => {
     (async () => {
@@ -54,8 +75,10 @@ const CriarConta = () => {
     if (value) {
       setCheckedMale(true);
       setCheckedFemale(false);
+      setGenero('Masculino');
     } else {
       setCheckedMale(false);
+      setGenero('Feminino');
     }
   };
 
@@ -63,15 +86,13 @@ const CriarConta = () => {
     if (value) {
       setCheckedFemale(true);
       setCheckedMale(false);
+      setGenero('Feminino');
     } else {
       setCheckedFemale(false);
+      setGenero('Masculino');
     }
   };
 
-  const handleCardPress = (item) => {
-    router.push('criarContaScreen');
-  };
-  
   function showDatePicker() {
     setDatePicker(true);
   };
@@ -89,7 +110,7 @@ const CriarConta = () => {
             <Image source={require('../../assets/icons/left.png')} />
           </TouchableOpacity>
         </View>
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'center', }}>
           <Text style={styles.headerTitle}>Criar Conta</Text>
         </View>
       </View>
@@ -101,6 +122,8 @@ const CriarConta = () => {
               <TextInput
                 style={styles.searchInput}
                 placeholder="Email"
+                value={email}
+                onChangeText={setEmail}
               />
           </View>
         </View>
@@ -111,6 +134,8 @@ const CriarConta = () => {
               style={styles.searchInput}
               placeholder="Password"
               secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
             />
           </View>
         </View>
@@ -120,6 +145,8 @@ const CriarConta = () => {
               <TextInput
                 style={styles.searchInput}
                 placeholder="Nome"
+                value={name}
+                onChangeText={setName}
               />
           </View>
         </View>
@@ -129,28 +156,35 @@ const CriarConta = () => {
               <TextInput
                 style={styles.searchInput}
                 placeholder="Apelido"
+                value={apelido}
+                onChangeText={apelido}
               />
           </View>
         </View>
 
         <View style = {styles.selectDate}>
           <View>
-            <Text style={styles.title}>Data de Nascimento: </Text>
+            <Text style={styles.title3}>Data de Nascimento: </Text>
           </View>
 
-          <View>
+          <View style={styles.calendarioButton}>
+            
             <TouchableOpacity onPress={showDatePicker}>
-              <Text>{date.toLocaleDateString()}</Text>
+              <Text style={styles.calendarioText}>{date.toLocaleDateString()}</Text>
             </TouchableOpacity>
+            
             {datePicker && (
               <DateTimePicker
+                dateFormat="day month year"
                 value={date}
                 mode={'date'}
-                display="default"
+                display="calendar"
                 onChange={onDateSelected}
+
               />
             )}
           </View>
+          
         </View>
 
         <View style={styles.searchContainer}>
@@ -158,6 +192,8 @@ const CriarConta = () => {
               <TextInput
                 style={styles.searchInput}
                 placeholder="Instituição"
+                value={instituicao}
+                onChangeText={setInstituicao}
               />
           </View>
         </View>

@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     fontSize: 30, 
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginRight: 10,
   },
 
   searchContainer: {
@@ -55,12 +56,19 @@ const styles = StyleSheet.create({
   title: {
     color: '#BDBDBD', 
     fontSize: 25, 
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 3,
   },
 
   title2: {
     color: '#BDBDBD', 
     fontSize: 16, 
+    fontWeight: 'bold'
+  },
+
+  title3: {
+    color: '#BDBDBD', 
+    fontSize: 20, 
     fontWeight: 'bold'
   },
 
@@ -91,7 +99,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-  }
+  },
+  calendarioButton: {
+    marginLeft: 10,
+    borderWidth: 0,
+    backgroundColor : '#E8E8E8',
+    borderRadius: 8,
+    fontSize: 20,
+  },
+
+  calendarioText: {
+    margin: 10,
+    backgroundColor : '#E8E8E8',
+    borderRadius: 8,
+    fontSize: 20,
+  },
 
 });
 

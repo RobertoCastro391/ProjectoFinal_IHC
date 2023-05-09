@@ -72,19 +72,38 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center'
   },
- 
-  // Style for iOS ONLY...
-  datePicker: {
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    width: 320,
-    height: 260,
-    display: 'flex',
-  },
 
   card: {
-    backgroundColor: '#E8E8E8', 
-    borderRadius: 8
+    backgroundColor: '#FFFFFF', 
+    borderRadius: 8,
+    width : '99%',
+    marginTop : 20,
+  },
+
+  cardProfiles: {
+    width: 65, 
+    height: 65,
+    borderRadius : 40,
+    marginTop : 8,
+   },
+
+   cardHeader: {
+    fontWeight : 'bold',
+   },
+
+  calendarioButton: {
+    marginLeft: 10,
+    borderWidth: 0,
+    backgroundColor : '#E8E8E8',
+    borderRadius: 8,
+    fontSize: 20,
+  },
+
+  calendarioText: {
+    margin: 10,
+    backgroundColor : '#E8E8E8',
+    borderRadius: 8,
+    fontSize: 20,
   },
 
 });

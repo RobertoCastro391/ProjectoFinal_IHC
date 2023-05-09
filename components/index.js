@@ -21,7 +21,11 @@ import Notification from "./notification/Notification";
 // Account Info screen
 import Account from "./account/Account";
 
+// Create offer screen
 import Createoffer from "./createOffer/Createoffer";
+
+// Minhas Ofertas screen
+import MinhasOfertas from "./minhasOfertas/MinhasOfertas";
 
 export {
   LogIn,
@@ -34,4 +38,5 @@ export {
   Notification,
   Account,
   Createoffer,
+  MinhasOfertas,
 };

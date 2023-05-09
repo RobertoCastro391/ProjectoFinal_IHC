@@ -23,7 +23,7 @@ const Home = () => {
             />
 
             <ScrollView showsVerticalScrollIndicator={false} >
-                <View style={{ flex: 1, backgroundColor: '#fff', padding: 16 }}>
+                <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
                     <Logo/>
                     <LogIn/>
                     <SingUp/>

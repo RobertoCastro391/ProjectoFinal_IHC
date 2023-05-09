@@ -19,7 +19,7 @@ const criarConta = () => {
                 }}
             />
             <ScrollView showsVerticalScrollIndicator={true} >
-                <View style={{ flex: 1, backgroundColor: '#fff', padding: 16 }}>
+                <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
                     <CriarConta />
                 </View>
             </ScrollView>

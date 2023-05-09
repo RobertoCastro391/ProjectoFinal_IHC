@@ -124,7 +124,29 @@ const styles = StyleSheet.create({
     map:{
       flex: 1,
       width: '100%',
-    }
+    },
+    row:{
+      flexDirection:'row',
+      justifyContent: 'center'
+    },
+
+    descritivo:{
+      flex: 3, 
+      fontSize: 19, 
+      justifyContent: 'center',
+      marginTop: 5,
+    },
+    descritivo2:{
+      flex: 3, 
+      fontSize: 19,
+       
+    },
+    descritivo3:{
+      flex: 4, 
+      fontSize: 19,
+      justifyContent: 'center',
+      marginTop: 5,
+    },
     
   
   });
