@@ -2,21 +2,32 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, Button} from 'react-native';
 import { useRouter } from "expo-router";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import styles from "./createoffer";
 
 const CreateOffer = () => {
   
   const router = useRouter();
+  const [datePicker, setDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
 
   const [destination, setDestination] = useState('');
-  const [date, setDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [seats, setSeats] = useState('');
   const [price, setPrice] = useState('');
   const [origin, setOrigin] = useState('');
   const [deviation, setDeviation] = useState('');
+
+  function showDatePicker() {
+    setDatePicker(true);
+  };
+
+  function onDateSelected(event, value) {
+    setDate(value);
+    setDatePicker(false);
+  };
   
   const handleSave = () => {
   // Implement your logic to save the collected information here
@@ -49,12 +60,20 @@ const CreateOffer = () => {
          value={destination}
          onChangeText={setDestination}
        />
-  <TextInput
-         style={styles.input}
-         placeholder="Date"
-         value={date}
-         onChangeText={setDate}
-       />
+  <View>
+            <TouchableOpacity onPress={showDatePicker}>
+              <Text>{date.toLocaleDateString()}</Text>
+            </TouchableOpacity>
+            {datePicker && (
+              <DateTimePicker
+                format="DD-MM-YYYY"
+                value={date}
+                mode={'date'}
+                display="default"
+                onChange={onDateSelected}
+              />
+            )}
+          </View>
   <TextInput
          style={styles.input}
          placeholder="Start Time"

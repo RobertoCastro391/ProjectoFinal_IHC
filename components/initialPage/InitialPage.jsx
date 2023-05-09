@@ -71,6 +71,7 @@ const InitialPage = () => {
             </TouchableOpacity>
             {datePicker && (
               <DateTimePicker
+                format="DD-MM-YYYY"
                 value={date}
                 mode={'date'}
                 display="default"

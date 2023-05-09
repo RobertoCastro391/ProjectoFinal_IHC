@@ -7,7 +7,7 @@ import { COLORS, FONT, SIZES } from "../../constants";
 const styles = StyleSheet.create({
   
     container: {
-      marginTop: SIZES.xxLarge,
+      marginTop: 20,
     },
   
     header: {
