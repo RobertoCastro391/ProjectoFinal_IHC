@@ -118,7 +118,7 @@ const InitialPage = () => {
 
           <View style = {styles.card} >
             <Card>
-              <Card.Title title="Alexandre Matias" subtitle="Universidade de Aveiro" left={LeftContent} titleStyle={{ marginLeft: 12, fontWeight : 'bold', fontSize: 23, marginTop:7 }} subtitleStyle={{ marginLeft: 12, marginTop:-6}} />
+              <Card.Title title="Alexandre Matias" subtitle="Universidade de Aveiro" left={LeftContent} titleStyle={{ marginLeft: 20, fontWeight : 'bold', fontSize: 23, marginTop:10 }} subtitleStyle={{ marginLeft: 20, marginTop:-6}} />
               <Card.Content>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 4}}>
                   <Image source={ require("../../assets/icons/star.png")} style = {{ width: 12, height: 12 }} />
@@ -127,28 +127,34 @@ const InitialPage = () => {
                   <Image source={ require("../../assets/icons/star.png")} style = {{ width: 12, height: 12 }}/>
                   <Image source={ require("../../assets/icons/star.png")} style = {{ width: 12, height: 12 }}/>
                 </View>
-                  <View style = {{marginTop:5}}>
+                  <View style = {{marginTop:10}}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5}}>
                       <Image source={ require("../../assets/icons/map-pin.png")} style = {{ width: 30, height: 30, marginTop: 10 }}/>
                       <Text style={{ marginTop: 5, fontSize : 18, marginLeft:3}}>Monção</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5}}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
                       <Image source={ require("../../assets/icons/clock.png")} style = {{ width: 30, height: 30, marginTop: 3 }}/>
                       <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>16H - 18H</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5}}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
                       <Image source={ require("../../assets/icons/euro.png")} style = {{ width: 30, height: 30, marginTop: 10 }}/>
                       <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>Negociável</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5}}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
                       <Image source={ require("../../assets/icons/seat.png")} style = {{ width: 30, height: 30, marginTop: 10 }}/>
                       <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>3 disponíveis</Text>
-                  </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
+                      <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>Local de Partida : Convívio</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
+                      <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>Desvio Disponibilizado : 10Kms</Text>
+                    </View>
                 </View>
               </Card.Content>
               <Card.Actions>
-                <Button>Cancel</Button>
-                <Button>Ok</Button>
+                <Button buttonColor='#5DB075' textColor='#FFFFFF' style={{borderColor:'#FFFFFF'}} >Cancel</Button>
+                <Button buttonColor = 'transparent' textColor='#000000' style={{borderColor:'#000000'}}>Ok</Button>
               </Card.Actions>
             </Card>
           </View>
