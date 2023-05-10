@@ -21,10 +21,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#5DB075',
     borderColor: '#fff',
-    borderWidth: 2,
     borderRadius: 30,
     height: 55,
-    width: 94 
+    width: 94,
+  },
+
+  EntrarConta2: {
+    flexDirection: 'row', 
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: '#5DB075',
+    borderColor: '#fff',
+    borderRadius: 30,
   },
 
   EntrarContaTitle: {

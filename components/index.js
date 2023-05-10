@@ -27,6 +27,9 @@ import Createoffer from "./createOffer/Createoffer";
 // Minhas Ofertas screen
 import MinhasOfertas from "./minhasOfertas/MinhasOfertas";
 
+// Chat screen
+import ChatAlexandre from "./messageChat/ChatAlexandre";
+
 export {
   LogIn,
   SingUp,
@@ -39,4 +42,5 @@ export {
   Account,
   Createoffer,
   MinhasOfertas,
+  ChatAlexandre
 };

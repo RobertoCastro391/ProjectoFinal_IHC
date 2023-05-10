@@ -1,15 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Button, PermissionsAndroid } from 'react-native';
 import { useRouter } from "expo-router";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import MapView from 'react-native-maps';
-
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import config from "../config/index.json";
+import MapViewDirections from 'react-native-maps-directions';
 import styles from "./createoffer";
 
 const CreateOffer = () => {
   
   const router = useRouter();
 
+  const mapEl = useRef(null);
+  const [origin, setOrigin] = useState(null);
+
+  useEffect(() => {
+    (async function () {
+      const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status === 'granted') {
+            let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+            setOrigin({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+                latitudeDelta: 0.000922,
+                longitudeDelta: 0.000421,
+            })
+        } else {
+            throw new Error('Location permission not granted');
+        }
+
+    })();
+  }, []);
+
+  const handlePlaceSelect = (data, details = null) => {
+    setDestination({
+      latitude: details.geometry.location.lat,
+      longitude: details.geometry.location.lng,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(destination);
+  };
   const [datePicker, setDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
 
@@ -19,7 +53,7 @@ const CreateOffer = () => {
   const [showArrivalPicker, setShowArrivalPicker] = useState(false);
 
 
-  const [destination, setDestination] = useState('');
+  const [destination, setDestination] = useState(null);
   const [endTime, setEndTime] = useState('');
   const [seats, setSeats] = useState('');
   const [price, setPrice] = useState('');
@@ -84,12 +118,16 @@ const CreateOffer = () => {
   <View style={styles.container2}>
     <View style={styles.row}>
       <Text style = {styles.descritivo}>Destino:</Text>
-      <View style = {{ flex: 7 }}>
-        <TextInput
-            style={styles.input}
-            value={destination}
-            onChangeText={setDestination}
-          />
+      <View style = {{ flex: 7, }}>
+        <GooglePlacesAutocomplete
+            placeholder='Search'
+            fetchDetails={true}
+            onPress={handlePlaceSelect}
+            query={{
+              key: config.googleapykey,
+              language: 'en',
+          }}
+          />        
       </View>
     </View>
     
@@ -210,16 +248,37 @@ const CreateOffer = () => {
     <View style = {{ alignItems: 'center', marginTop: 10,marginBottom:10 }}  >
       <MapView
         style={{height: 300, width: '100%'}}
-      initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-        }}
-      />   
+        initialRegion={origin}
+        showsUserLocation={true}
+        ref = {mapEl}>
+        
+        {destination && 
+          <MapViewDirections
+            origin={origin}
+            destination={destination}
+            apikey={config.googleapykey}
+            strokeWidth={3}
+            onReady={result => {
+              mapEl.current.fitToCoordinates(
+                result.coordinates,{
+                    edgePadding:{
+                        top:50,
+                        bottom:50,
+                        left:50,
+                        right:50
+                    } 
+                }
+              )
+              }
+            }
+          />
+        }
+      </MapView>   
       
     </View>
-          
+    
+    
+    
 
     
     <Button title="Save" onPress={handleSave} />

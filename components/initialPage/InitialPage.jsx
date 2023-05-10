@@ -15,6 +15,8 @@ const InitialPage = () => {
   const [datePicker, setDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
 
+  const [showother, setShowother] = useState(false);
+
   const data = [
     { label: 'Preço mais alto', value: '1' },
     { label: 'Preço mais baixo', value: '2' },
@@ -50,6 +52,15 @@ const InitialPage = () => {
   const handlePressMinhasOfertas = (item) => {
     router.push('minhasOfertasScreen');
   }
+
+  const handlePressContactar = (item) => {
+    router.push('messageChatAlexScreen');
+  }
+
+  const handlePressInfo = () => {
+    setShowother(!showother);
+  }
+
 
   return (
     <View style={styles.container}>
@@ -128,9 +139,12 @@ const InitialPage = () => {
                   <Image source={ require("../../assets/icons/star.png")} style = {{ width: 12, height: 12 }}/>
                 </View>
                   <View style = {{marginTop:10}}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5}}>
-                      <Image source={ require("../../assets/icons/map-pin.png")} style = {{ width: 30, height: 30, marginTop: 10 }}/>
-                      <Text style={{ marginTop: 5, fontSize : 18, marginLeft:3}}>Monção</Text>
+                    <View style={{ flexDirection: 'row', marginTop: 5}}>
+                      <Image source={ require("../../assets/icons/route.png")} style = {{ width: 50, height: 55, marginTop: 10, marginLeft:5, marginRight: -16 }}/>
+                      <View style={{ flexDirection:'column'}}>
+                        <Text style={{ marginTop: 8, fontSize : 18, fontWeight:'500'}}>Monção</Text>
+                        <Text style={{  marginTop: 6, fontSize : 18}}>Convívio</Text>
+                      </View>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
                       <Image source={ require("../../assets/icons/clock.png")} style = {{ width: 30, height: 30, marginTop: 3 }}/>
@@ -145,17 +159,26 @@ const InitialPage = () => {
                       <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>3 disponíveis</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
-                      <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>Local de Partida : Convívio</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3, marginLeft: 5}}>
-                      <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3}}>Desvio Disponibilizado : 10Kms</Text>
+                      <Text style={{  marginTop: 5, fontSize : 18, marginLeft:3, fontWeight:'500'}}>Desvio Disponibilizado :</Text>
+                      <Text style={{  marginTop: 6, fontSize : 18, marginLeft:3}}>10 Km</Text>
                     </View>
                 </View>
               </Card.Content>
               <Card.Actions>
-                <Button buttonColor='#5DB075' textColor='#FFFFFF' style={{borderColor:'#FFFFFF'}} >Cancel</Button>
-                <Button buttonColor = 'transparent' textColor='#000000' style={{borderColor:'#000000'}}>Ok</Button>
+                <TouchableOpacity style= {{ flexDirection: 'row', alignItems: 'center',justifyContent: 'space-around',backgroundColor: '#5DB075',borderRadius: 30, height:45, width:'87%'}} onPress = {handlePressContactar}>
+                  <Text style={{color:'#FFFFFF', marginLeft:25, fontWeight:'400', fontSize:20, marginBottom:4}}>Contactar para reservar</Text>
+                  <Image source={require('../../assets/icons/envelope.png')} style={{ height: 25, width: 60 }} resizeMode='contain' />
+                </TouchableOpacity>
+                <TouchableOpacity onPress = {handlePressInfo} >
+                  <Image source={require('../../assets/icons/info.png')} style={{ height: 40, width: 40 }} resizeMode='contain' />
+                </TouchableOpacity>
+
+                
+
               </Card.Actions>
+                {showother && (
+                    <Text>Ola</Text>
+                )}
             </Card>
           </View>
           <View style = {styles.card} >

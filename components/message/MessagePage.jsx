@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image} from "react-native";
 import { useRouter } from "expo-router";
 import styles from "./message_Style";
 
@@ -22,13 +22,38 @@ const MessagePage = () => {
           </View>
       </View>
 
-      <View style = {styles.header} >
-        <Text>
-          Implementar aqui a cena das mensagens 
-        </Text>
+      <View style={{ marginTop: 5 , borderBottomWidth: 0.3, borderBottomColor: '#bdbdbd'}} >
+        <TouchableOpacity onPress={(item) => {router.push('messageChatAlexScreen')}} >
+          <View style = {{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }} >
+            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfiles} resizeMode='contain' />
+            <View style = {styles.containerMessage}>
+              <Text style={styles.title}>Alexandre Matias</Text>
+              <Text style={styles.subtitle}>Olá, tudo bem?</Text>
+            </View>
+            <View style={{ flex: 1, alignItems: 'flex-end', marginTop: -4 }}>
+              <Text style = {{ color: '#BDBDBD', fontSize: 18 }}>há 4m</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
 
+      <View style={{ marginTop: 5 , borderBottomWidth: 0.3, borderBottomColor: '#bdbdbd', justifyContent: 'center'}} >
+        <TouchableOpacity >
+          <View style = {{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }} >
+            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfiles} resizeMode='contain' />
+            <View style = {styles.containerMessage}>
+              <Text style={styles.title}>Alexandre Matias</Text>
+              <Text style={styles.subtitle}>Olá, tudo bem?</Text>
+            </View>
+            <View style={{ flex: 1, alignItems: 'flex-end', marginTop: -4 }}>
+              <Text style = {{ color: '#BDBDBD', fontSize: 18 }}>há 4m</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
+
+    
   );
 }
 
