@@ -4,6 +4,7 @@ import { Searchbar, Avatar, Button, Card } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from "expo-router";
+import TalkBalloon from "react-native-talk-balloon";
 
 import styles from "./initialPage_Style";
 
@@ -177,7 +178,24 @@ const InitialPage = () => {
 
               </Card.Actions>
                 {showother && (
-                    <Text>Ola</Text>
+                    <Card style = {{width:'95%', marginLeft:9}} mode='outlined'>
+                    <Card.Title title="Motorista:" titleStyle={{ fontWeight : 'bold', fontSize: 22 }}/>
+                    <View style={{ flexDirection: 'row'}}>
+                      <Card.Title left={LeftContent} style={{marginTop:-15}}/>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 20, marginTop:-10}}>
+                        <Image source={ require("../../assets/icons/star.png")} style = {{ width: 25, height: 25 }} />
+                        <Image source={ require("../../assets/icons/star.png")} style = {{ width: 25, height: 25 }}/>
+                        <Image source={ require("../../assets/icons/star.png")} style = {{ width: 25, height: 25 }}/>
+                        <Image source={ require("../../assets/icons/star.png")} style = {{ width: 25, height: 25 }}/>
+                        <Image source={ require("../../assets/icons/star.png")} style = {{ width: 25, height: 25 }}/>
+                      </View>
+                    </View>
+                      <Card.Content>
+                      <TalkBalloon triangleDirection='top' triangleOffSet='10%'>
+                        <Text>Olá! Eu sou o Alexandre e estudo na UA. Juntei-me à UNIRides para poupar nos custos das viagens e ajudar quem sofre com as greves chatas da CP :)</Text>
+                      </TalkBalloon>
+                    </Card.Content>
+                  </Card>
                 )}
             </Card>
           </View>
