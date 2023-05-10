@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Button, PermissionsAndroid } from 'react-native';
 import { useRouter } from "expo-router";
 import DateTimePicker from '@react-native-community/datetimepicker';
-//import Geolocation from '@react-native-community/geolocation';
+import MapView from 'react-native-maps';
 
 import styles from "./createoffer";
 
@@ -204,9 +204,22 @@ const CreateOffer = () => {
       </View>
     </View> 
     <View style={styles.row}>
-      <Text style = {styles.descritivo}>Definir rota:</Text>
+      <Text style = {styles.descritivo}>Definir rota:</Text>      
+    </View>
+
+    <View style = {{ alignItems: 'center', marginTop: 10,marginBottom:10 }}  >
+      <MapView
+        style={{height: 300, width: '100%'}}
+      initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        }}
+      />   
       
-    </View>            
+    </View>
+          
 
     
     <Button title="Save" onPress={handleSave} />
