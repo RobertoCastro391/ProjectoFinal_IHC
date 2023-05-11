@@ -1,49 +1,210 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text,  TouchableOpacity, Image } from "react-native";
-import { Searchbar, Avatar, Button, Card } from 'react-native-paper';
+import { Searchbar, Card } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from "expo-router";
 import TalkBalloon from "react-native-talk-balloon";
+import MapView from 'react-native-maps';
+import config from "../config/index.json";
+import MapViewDirections from 'react-native-maps-directions';
 
 import styles from "./initialPage_Style";
-import { set } from 'react-native-reanimated';
+import { Logo } from '../../components';
 
 
 const InitialPage = () => {
 
   const router = useRouter();
+
+  const [destination, setDestination] = useState(null);
+  const [startLocal, setstartLocal] = useState('');
  
   const [datePicker, setDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
-
-  const [showother, setShowother] = useState(false);
+  
   const [showother1, setShowother1] = useState(false);
   const [showother2, setShowother2] = useState(false);
   const [showother3, setShowother3] = useState(false);
+  const [showother4, setShowother4] = useState(false);
 
-  const [showCard1, setShowCard1] = useState(true);
-  const [showCard2, setShowCard2] = useState(true);
-  const [showCard3, setShowCard3] = useState(true);
-  const [showCard4, setShowCard4] = useState(true);
+  const [showSearchCard1, setShowSearchCard1] = useState(true);
+  const [showSearchCard2, setShowSearchCard2] = useState(true);
+  const [showSearchCard3, setShowSearchCard3] = useState(true);
+  const [showSearchCard4, setShowSearchCard4] = useState(true);
 
+  const [showFilterCard1, setShowFilterCard1] = useState(true);
+  const [showFilterCard2, setShowFilterCard2] = useState(true);
+  const [showFilterCard3, setShowFilterCard3] = useState(true);
+  const [showFilterCard4, setShowFilterCard4] = useState(true);
+
+  const [showDateCard1, setShowDateCard1] = useState(true);
+  const [showDateCard2, setShowDateCard2] = useState(true);
+  const [showDateCard3, setShowDateCard3] = useState(true);
+  const [showDateCard4, setShowDateCard4] = useState(true);
+
+
+  const handleDate = (value) => {
+    if (value == '16/05/2023') {
+      setShowDateCard1(false);
+      setShowDateCard2(false);
+      setShowDateCard3(false);
+      setShowDateCard4(true);
+    }
+    else if (value == '11/05/2023') {
+      setShowDateCard1(true);
+      setShowDateCard2(false);
+      setShowDateCard3(false);
+      setShowDateCard4(false);
+    }
+    else if (value == '12/05/2023') {
+      setShowDateCard1(false);
+      setShowDateCard2(true);
+      setShowDateCard3(false);
+      setShowDateCard4(false);
+    }
+    else if (value == '15/05/2023') {
+      setShowDateCard1(false);
+      setShowDateCard2(false);
+      setShowDateCard3(true);
+      setShowDateCard4(false);
+    }
+    else {
+      setShowDateCard1(true);
+      setShowDateCard2(true);
+      setShowDateCard3(true);
+      setShowDateCard4(true);
+    }
+  }
 
   const handleFilter = (value) => {
     if (value == '3') {
-      setShowCard1(true);
-      setShowCard2(false);
-      setShowCard3(true);
-      setShowCard4(true);
+      setShowFilterCard1(true);
+      setShowFilterCard2(false);
+      setShowFilterCard3(true);
+      setShowFilterCard4(false);
     }
     if (value == '0') {
-      setShowCard1(true);
-      setShowCard2(true);
-      setShowCard3(true);
-      setShowCard4(true);
+      setShowFilterCard1(true);
+      setShowFilterCard2(true);
+      setShowFilterCard3(true);
+      setShowFilterCard4(true);
+    }
+  }
+
+  const handleSearchBar = (value) => {
+    
+    if (value == 'Manhente') {
+      setShowSearchCard1(false);
+      setShowSearchCard2(true);
+      setShowSearchCard3(false);
+      setShowSearchCard4(false);
+    }
+    
+    if (value == 'Monção') {
+      setShowSearchCard1(false);
+      setShowSearchCard2(false);
+      setShowSearchCard3(true);
+      setShowSearchCard4(true);
     }
 
+    if (value == 'Viseu') {
+      setShowSearchCard1(true);
+      setShowSearchCard2(false);
+      setShowSearchCard3(false);
+      setShowSearchCard4(false);
+    }
+
+    if (value == '') {
+      setShowSearchCard1(true);
+      setShowSearchCard2(true);
+      setShowSearchCard3(true);
+      setShowSearchCard4(true);
+    }
+  }
+
+  const handlePlaceSelect1_1 = (data, details = null) => {
+    setDestination({
+      latitude: 40.656735,
+      longitude: -7.913044,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(destination);
+  };
+
+  const handlePlaceSelect1_2 = (data, details = null) => {
+    setstartLocal({
+      latitude: 40.208910,
+      longitude: -8.414411,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(startLocal);
+ 
+  }
+  const handlePlaceSelect2_1 = (data, details = null) => {
+    setDestination({
+      latitude: 41.544776,
+      longitude: -8.574631,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(destination);
+  };
+
+  const handlePlaceSelect2_2 = (data, details = null) => {
+    setstartLocal({
+      latitude: 41.559882,
+      longitude: -8.400233,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(startLocal);
+ 
+  }
+  const handlePlaceSelect3_1 = (data, details = null) => {
+    setDestination({
+      latitude: 42.077112,
+      longitude: -8.482382,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(destination);
+  };
+
+  const handlePlaceSelect3_2 = (data, details = null) => {
+    setstartLocal({
+      latitude: 40.633975,
+      longitude: -8.648378,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(startLocal);
+ 
+  }
+  const handlePlaceSelect4_1 = (data, details = null) => {
+    setDestination({
+      latitude: 42.077112,
+      longitude: -8.482382,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(destination);
+  };
+
+  const handlePlaceSelect4_2 = (data, details = null) => {
+    setstartLocal({
+      latitude: 40.633165,
+      longitude: -8.659322,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(startLocal);
+ 
   }
   
+  const mapEl = useRef(null);
 
   const data = [
     { label: 'Limpar', value: '0' },
@@ -56,13 +217,16 @@ const InitialPage = () => {
     { label: 'Sexo F', value: '7' },
     { label: 'Sexo M', value: '8' },
     { label: 'Horário: __H:__M', value: '9' },
-    ];
+  ];
 
   const [value, setValue] = useState(null);
-
   const [searchQuery, setSearchQuery] = React.useState('');
-
-  const onChangeSearch = query => setSearchQuery(query);
+  
+  const onChangeSearch = (query) => {
+    setSearchQuery(query); 
+    console.log(query);
+    handleSearchBar(query);
+  }
 
   const LeftContent = props => <Image source={require("../../assets/images/alexandre.png")} style = {styles.cardProfiles} />
   const LeftContent1 = props => <Image source={require("../../assets/images/mulher1.jpeg")} style = {styles.cardProfiles} />
@@ -75,6 +239,7 @@ const InitialPage = () => {
 
   function onDateSelected(event, value) {
     setDate(value);
+    handleDate(value.toLocaleDateString());
     setDatePicker(false);
   };
 
@@ -86,22 +251,70 @@ const InitialPage = () => {
     router.push('messageChatAlexScreen');
   }
 
-  const handlePressInfo = () => {
-    setShowother(!showother);
-  }
-  const handlePressInfo1 = () => {
-    setShowother1(!showother1);
-  }
-  const handlePressInfo2 = () => {
-    setShowother2(!showother2);
-  }
-  const handlePressInfo3 = () => {
-    setShowother3(!showother3);
+  const handleClearFilter = () => {
+    setShowFilterCard1(true);
+    setShowFilterCard2(true);
+    setShowFilterCard3(true);
+    setShowFilterCard4(true);
+    
+    setShowDateCard1(true);
+    setShowDateCard2(true);
+    setShowDateCard3(true);
+    setShowDateCard4(true);
+    
+    setShowSearchCard1(true);
+    setShowSearchCard2(true);
+    setShowSearchCard3(true);
+    setShowSearchCard4(true);
+    setValue(null);
+    setSearchQuery(null);
+    setDate(new Date());
   }
 
+  const handlePressInfo1 = () => {
+    setShowother1(!showother1);
+    setShowother2(false);
+    setShowother3(false);
+    setShowother4(false);
+    handlePlaceSelect1_1();
+    handlePlaceSelect1_2();
+  }
+
+  const handlePressInfo2 = () => {
+    setShowother1(false);
+    setShowother2(!showother2);
+    setShowother3(false);
+    setShowother4(false)
+    handlePlaceSelect2_1();
+    handlePlaceSelect2_2();
+      
+  }
+
+  const handlePressInfo3 = () => {
+    setShowother1(false)
+    setShowother2(false);
+    setShowother3(!showother3)
+    setShowother4(false)
+    handlePlaceSelect3_1();
+    handlePlaceSelect3_2();
+  }
+
+  const handlePressInfo4 = () => {
+    setShowother1(false)
+    setShowother2(false);
+    setShowother3(false);
+    setShowother4(!showother4)
+    handlePlaceSelect4_1();
+    handlePlaceSelect4_2();
+  }
 
   return (
     <View style={styles.container}>
+      
+      <TouchableOpacity style = {{ marginTop: -25, marginBottom: 15 }} onPress = {handleClearFilter} >
+        <Logo />
+      </TouchableOpacity>
+      
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Searchbar
           placeholder="Procura o teu destino"
@@ -165,14 +378,14 @@ const InitialPage = () => {
             valueField="value"
             placeholder={"Filtrar"}
             value={value}
-            onChange={(value) => {console.log(value.value); handleFilter(value.value);}}
+            onChange={(value) => {console.log(value.value); handleFilter(value.value); setValue(value);}}
           />
         </View>
       </View>
 
       <View style={{ alignItems: "center", marginTop: 13 }}>
         
-        {showCard1 && (
+        {showFilterCard1 && showSearchCard1 && showDateCard1 && (
           <View style={styles.card}>
           <Card>
           <Card.Title
@@ -356,7 +569,7 @@ const InitialPage = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo}>
+              <TouchableOpacity onPress={handlePressInfo1}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -364,9 +577,37 @@ const InitialPage = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother && (
+            {showother1 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
+                <MapView
+                    style={{height: 300, width: '100%',}}
+                    ref = {mapEl}>
+                    
+                    {destination && startLocal &&
+                      <MapViewDirections
+                        origin={startLocal}
+                        destination={destination}
+                        apikey={config.googleapykey}
+                        strokeWidth={3}
+                        language="pt"
+                        onReady={result => {
+                          mapEl.current.fitToCoordinates(
+                            result.coordinates,{
+                                edgePadding:{
+                                    top:50,
+                                    bottom:50,
+                                    left:50,
+                                    right:50
+                                } 
+                            }
+                          )
+                          }
+                        }
+                      />
+                    }
+                  </MapView>
+                  
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -425,7 +666,7 @@ const InitialPage = () => {
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -515,7 +756,7 @@ const InitialPage = () => {
         </View>
         )}
 
-        {showCard2 && (
+        {showFilterCard2 && showSearchCard2 && showDateCard2 && (
           <View style={styles.card}>
           <Card>
             <Card.Title
@@ -699,7 +940,7 @@ const InitialPage = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo1}>
+              <TouchableOpacity onPress={handlePressInfo2}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -707,9 +948,38 @@ const InitialPage = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother1 && (
+            {showother2 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
+                  
+                <MapView
+                    style={{height: 300, width: '100%',}}
+                    ref = {mapEl}>
+                    
+                    {destination && startLocal &&
+                      <MapViewDirections
+                        origin={startLocal}
+                        destination={destination}
+                        apikey={config.googleapykey}
+                        strokeWidth={3}
+                        language="pt"
+                        onReady={result => {
+                          mapEl.current.fitToCoordinates(
+                            result.coordinates,{
+                                edgePadding:{
+                                    top:50,
+                                    bottom:50,
+                                    left:50,
+                                    right:50
+                                } 
+                            }
+                          )
+                          }
+                        }
+                      />
+                    }
+                  </MapView>
+                  
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -768,7 +1038,7 @@ const InitialPage = () => {
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent1} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -809,7 +1079,7 @@ const InitialPage = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"
@@ -858,7 +1128,7 @@ const InitialPage = () => {
         </View>
         )}
 
-        {showCard3 && (
+        {showFilterCard3 && showSearchCard3 && showDateCard3 && (
           <View style={styles.card}>
           <Card>
             <Card.Title
@@ -1042,7 +1312,7 @@ const InitialPage = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo2}>
+              <TouchableOpacity onPress={handlePressInfo3}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -1050,9 +1320,38 @@ const InitialPage = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother2 && (
+            {showother3 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
+                  
+                <MapView
+                    style={{height: 300, width: '100%',}}
+                    ref = {mapEl}>
+                    
+                    {destination && startLocal &&
+                      <MapViewDirections
+                        origin={startLocal}
+                        destination={destination}
+                        apikey={config.googleapykey}
+                        strokeWidth={3}
+                        language="pt"
+                        onReady={result => {
+                          mapEl.current.fitToCoordinates(
+                            result.coordinates,{
+                                edgePadding:{
+                                    top:50,
+                                    bottom:50,
+                                    left:50,
+                                    right:50
+                                } 
+                            }
+                          )
+                          }
+                        }
+                      />
+                    }
+                  </MapView>
+                  
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -1111,7 +1410,7 @@ const InitialPage = () => {
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -1152,7 +1451,7 @@ const InitialPage = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent2} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"
@@ -1201,7 +1500,7 @@ const InitialPage = () => {
         </View>
         )}
         
-        { showCard4 && (
+        { showFilterCard4 && showSearchCard4 && showDateCard4 && (
           <View style={styles.card}>
           <Card>
             <Card.Title
@@ -1385,7 +1684,7 @@ const InitialPage = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo3}>
+              <TouchableOpacity onPress={handlePressInfo4}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -1393,15 +1692,44 @@ const InitialPage = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother3 && (
+            {showother4 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
+                  
+                <MapView
+                    style={{height: 300, width: '100%',}}
+                    ref = {mapEl}>
+                    
+                    {destination && startLocal &&
+                      <MapViewDirections
+                        origin={startLocal}
+                        destination={destination}
+                        apikey={config.googleapykey}
+                        strokeWidth={3}
+                        language="pt"
+                        onReady={result => {
+                          mapEl.current.fitToCoordinates(
+                            result.coordinates,{
+                                edgePadding:{
+                                    top:50,
+                                    bottom:50,
+                                    left:50,
+                                    right:50
+                                } 
+                            }
+                          )
+                          }
+                        }
+                      />
+                    }
+                  </MapView>
+                  
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent3} style={{ marginTop: -15 }} />
+                    <Card.Title left={LeftContent} style={{ marginTop: -15 }} />
                     <View
                       style={{
                         flexDirection: "row",
@@ -1454,7 +1782,7 @@ const InitialPage = () => {
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent2} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -1495,7 +1823,7 @@ const InitialPage = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"

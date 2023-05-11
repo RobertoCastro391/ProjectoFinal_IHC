@@ -1,19 +1,16 @@
 import React, { useState, useRef } from 'react';
 import { View, Text,  TouchableOpacity, Image } from "react-native";
-import { Searchbar, Avatar, Button, Card } from 'react-native-paper';
+import { Searchbar, Card } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from "expo-router";
 import TalkBalloon from "react-native-talk-balloon";
 import MapView from 'react-native-maps';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import config from "../config/index.json";
 import MapViewDirections from 'react-native-maps-directions';
 
 import styles from "./initialPagev2_Style";
-
+import { Logo } from '../../components';
 
 const InitialPagev2 = () => {
 
@@ -21,8 +18,8 @@ const InitialPagev2 = () => {
 
     const handlePlaceSelect1_1 = (data, details = null) => {
       setDestination({
-        latitude: 40.656735,
-        longitude: -7.913044,
+        latitude: 40.640909,
+        longitude: -8.653683,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -31,8 +28,8 @@ const InitialPagev2 = () => {
   
     const handlePlaceSelect1_2 = (data, details = null) => {
       setstartLocal({
-        latitude: 40.208910,
-        longitude: -8.414411,
+        latitude: 42.077077, 
+        longitude: -8.480854,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -41,8 +38,8 @@ const InitialPagev2 = () => {
     }
     const handlePlaceSelect2_1 = (data, details = null) => {
       setDestination({
-        latitude: 41.544776,
-        longitude: -8.574631,
+        latitude: 40.656281, 
+        longitude: -7.912629,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -51,8 +48,8 @@ const InitialPagev2 = () => {
   
     const handlePlaceSelect2_2 = (data, details = null) => {
       setstartLocal({
-        latitude: 41.559882,
-        longitude: -8.400233,
+        latitude: 40.208902, 
+        longitude: -8.414539,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -61,8 +58,8 @@ const InitialPagev2 = () => {
     }
     const handlePlaceSelect3_1 = (data, details = null) => {
       setDestination({
-        latitude: 42.077112,
-        longitude: -8.482382,
+        latitude: 41.543933, 
+        longitude: -8.574213,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -71,8 +68,8 @@ const InitialPagev2 = () => {
   
     const handlePlaceSelect3_2 = (data, details = null) => {
       setstartLocal({
-        latitude: 40.633975,
-        longitude: -8.648378,
+        latitude: 41.559890, 
+        longitude: -8.400287,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -81,8 +78,8 @@ const InitialPagev2 = () => {
     }
     const handlePlaceSelect4_1 = (data, details = null) => {
       setDestination({
-        latitude: 42.077112,
-        longitude: -8.482382,
+        latitude: 42.077120, 
+        longitude: -8.482318,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
@@ -91,14 +88,36 @@ const InitialPagev2 = () => {
   
     const handlePlaceSelect4_2 = (data, details = null) => {
       setstartLocal({
-        latitude: 40.633165,
-        longitude: -8.659322,
+        latitude: 40.633983, 
+        longitude: -8.648410,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
       console.log(startLocal);
    
     }
+
+    const handlePlaceSelect5_1 = (data, details = null) => {
+      setDestination({
+        latitude: 42.077120, 
+        longitude: -8.482318,
+        latitudeDelta: 0.000922,
+        longitudeDelta: 0.000421,
+      });
+      console.log(destination);
+    };
+  
+    const handlePlaceSelect5_2 = (data, details = null) => {
+      setstartLocal({
+        latitude: 40.633279, 
+        longitude: -8.659332,
+        latitudeDelta: 0.000922,
+        longitudeDelta: 0.000421,
+      });
+      console.log(startLocal);
+   
+    }
+
     const mapEl = useRef(null);
 
     
@@ -109,11 +128,11 @@ const InitialPagev2 = () => {
     
     const [date, setDate] = useState(new Date());
   
-    const [showother, setShowother] = useState(false);
     const [showother1, setShowother1] = useState(false);
     const [showother2, setShowother2] = useState(false);
     const [showother3, setShowother3] = useState(false);
     const [showother4, setShowother4] = useState(false);
+    const [showother5, setShowother5] = useState(false);
 
     const [showSearchCard1, setShowSearchCard1] = useState(true);
     const [showSearchCard2, setShowSearchCard2] = useState(true);
@@ -290,51 +309,83 @@ const InitialPagev2 = () => {
         router.push('minhasOfertasScreenv2');
     }
   
-    const handlePressInfo4 = () => {
-        setShowother4(!showother4);
-      }
-    const handlePressInfo = () => {
-      setShowother(!showother);
-      setShowother1(false);
+    const handlePressInfo1 = () => {
+      setShowother1(!showother1);
       setShowother2(false);
       setShowother3(false);
       setShowother4(false);
+      setShowother5(false);
       handlePlaceSelect1_1();
       handlePlaceSelect1_2();
     }
-    const handlePressInfo1 = () => {
-      setShowother1(!showother1);
-      setShowother(false)
-      setShowother2(false);
+    const handlePressInfo2 = () => {
+      setShowother1(false);
+      setShowother2(!showother2)
       setShowother3(false);
-      setShowother4(false)
+      setShowother4(false);
+      setShowother5(false)
       handlePlaceSelect2_1();
       handlePlaceSelect2_2();
       
     }
-    const handlePressInfo2 = () => {
-      setShowother(false)
-      setShowother1(false)
-      setShowother2(!showother2);
-      setShowother3(false)
-      setShowother4(false)
-      handlePlaceSelect3_1();
-      handlePlaceSelect3_2();
-      
-    }
+
     const handlePressInfo3 = () => {
-      
-      setShowother(false)
       setShowother1(false)
-      setShowother2(false);
+      setShowother2(false)
       setShowother3(!showother3);
       setShowother4(false)
+      setShowother5(false)
+      handlePlaceSelect3_1();
+      handlePlaceSelect3_2();
+    }
+
+    const handlePressInfo4 = () => {
+      setShowother1(false)
+      setShowother2(false)
+      setShowother3(false);
+      setShowother4(!showother4);
+      setShowother5(false)
       handlePlaceSelect4_1();
       handlePlaceSelect4_2();
     }
 
+    const handlePressInfo5 = () => {
+      setShowother1(false)
+      setShowother2(false);
+      setShowother3(false);
+      setShowother4(false);
+      setShowother5(!showother5);
+      handlePlaceSelect5_1();
+      handlePlaceSelect5_2();
+    }
+
+    const handleClearFilter = () => {
+      setShowFilterCard1(true);
+      setShowFilterCard2(true);
+      setShowFilterCard3(true);
+      setShowFilterCard4(true);
+      
+      setShowDateCard1(true);
+      setShowDateCard2(true);
+      setShowDateCard3(true);
+      setShowDateCard4(true);
+      
+      setShowSearchCard1(true);
+      setShowSearchCard2(true);
+      setShowSearchCard3(true);
+      setShowSearchCard4(true);
+      setValue(null);
+      setSearchQuery(null);
+      setDate(new Date());
+    }
+
   return (
     <View style={styles.container}>
+      
+      <TouchableOpacity style = {{ marginTop: -25, marginBottom: 15 }} onPress = {handleClearFilter} >
+        <Logo />
+      </TouchableOpacity>
+      
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Searchbar
           placeholder="Procura o teu destino"
@@ -582,7 +633,7 @@ const InitialPagev2 = () => {
                   Minha Oferta
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo4}>
+              <TouchableOpacity onPress={handlePressInfo1}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -590,9 +641,38 @@ const InitialPagev2 = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother4 && (
+            {showother1 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
+                  
+                <MapView
+                    style={{height: 300, width: '100%',}}
+                    ref = {mapEl}>
+                    
+                    {destination && startLocal &&
+                      <MapViewDirections
+                        origin={startLocal}
+                        destination={destination}
+                        apikey={config.googleapykey}
+                        strokeWidth={3}
+                        language="pt"
+                        onReady={result => {
+                          mapEl.current.fitToCoordinates(
+                            result.coordinates,{
+                                edgePadding:{
+                                    top:50,
+                                    bottom:50,
+                                    left:50,
+                                    right:50
+                                } 
+                            }
+                          )
+                          }
+                        }
+                      />
+                    }
+                  </MapView> 
+
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -925,7 +1005,7 @@ const InitialPagev2 = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo}>
+              <TouchableOpacity onPress={handlePressInfo2}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -933,7 +1013,7 @@ const InitialPagev2 = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother && (
+            {showother2 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
                 <MapView
@@ -1295,7 +1375,7 @@ const InitialPagev2 = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo1}>
+              <TouchableOpacity onPress={handlePressInfo3}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -1303,7 +1383,7 @@ const InitialPagev2 = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother1 && (
+            {showother3 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
                 <MapView
@@ -1665,7 +1745,7 @@ const InitialPagev2 = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo2}>
+              <TouchableOpacity onPress={handlePressInfo4}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -1673,7 +1753,7 @@ const InitialPagev2 = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother2 && (
+            {showother4 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
                 <MapView
@@ -2035,7 +2115,7 @@ const InitialPagev2 = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handlePressInfo3}>
+              <TouchableOpacity onPress={handlePressInfo5}>
                 <Image
                   source={require("../../assets/icons/info.png")}
                   style={{ height: 40, width: 40 }}
@@ -2043,7 +2123,7 @@ const InitialPagev2 = () => {
                 />
               </TouchableOpacity>
             </Card.Actions>
-            {showother3 && (
+            {showother5 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
                 <MapView
