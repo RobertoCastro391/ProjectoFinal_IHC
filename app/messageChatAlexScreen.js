@@ -2,7 +2,7 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { Stack } from 'expo-router';
 
-import { ChatAlexandre, Footer } from '../components'
+import { ChatAlexandre, TextInputChat, Footer } from '../components'
 
 const messageChatAlexScreen = () => {
     return (

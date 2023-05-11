@@ -8,7 +8,8 @@ import * as Permissions from 'expo-permissions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import config from "../config/index.json";
 import MapViewDirections from 'react-native-maps-directions';
-import styles from "./createoffer";
+import styles from "./createoffer_Style";
+import { set } from 'react-native-reanimated';
 
 const CreateOffer = () => {
   
@@ -16,6 +17,7 @@ const CreateOffer = () => {
 
   const mapEl = useRef(null);
   const [origin, setOrigin] = useState(null);
+  const [distance, setDistance] = useState(null);
 
   useEffect(() => {
     (async function () {
@@ -44,6 +46,16 @@ const CreateOffer = () => {
     });
     console.log(destination);
   };
+
+  const handlePlaceSelect2 = (data, details = null) => {
+    setstartLocal({
+      latitude: details.geometry.location.lat,
+      longitude: details.geometry.location.lng,
+      latitudeDelta: 0.000922,
+      longitudeDelta: 0.000421,
+    });
+    console.log(startLocal);
+  };
   const [datePicker, setDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
 
@@ -58,7 +70,11 @@ const CreateOffer = () => {
   const [seats, setSeats] = useState('');
   const [price, setPrice] = useState('');
   const [deviation, setDeviation] = useState('');
+  
+  const [obser, setObser] = useState('');
   const [startLocal, setstartLocal] = useState('');
+
+  const [corNegociavel, setCorNegociavel] = useState('#BDBDBD');
 
   function showDatePicker() {
     setDatePicker(true);
@@ -91,6 +107,17 @@ const CreateOffer = () => {
       setArrivalTime(selectedTime);
     }
   };
+
+  const handlePressNegocivelButton = () => {
+    
+    if (corNegociavel === '#BDBDBD') {
+      setCorNegociavel('#5DB075');
+    }
+    if (corNegociavel === '#5DB075') {
+      setCorNegociavel('#BDBDBD');
+    }
+
+  };
   
   const handleSave = () => {
   // Implement your logic to save the collected information here
@@ -101,13 +128,14 @@ const CreateOffer = () => {
   console.log('Seats:', seats);
   console.log('Price:', price);
   console.log('Deviation:', deviation);
+  router.push('minhasOfertasScreenv2');
   };
   
   return (
   <View style={styles.container}>
     <View style = {styles.header} >
         <View style = {{ flex: 0, alignItems: 'flex-start' }} >
-            <TouchableOpacity onPress={() => router.back()}>
+            <TouchableOpacity onPress={(item) => router.back()}>
               <Text style = { styles.VoltarButton } >Voltar</Text>
             </TouchableOpacity>
           </View>
@@ -115,21 +143,49 @@ const CreateOffer = () => {
             <Text style={styles.headerTitle}>CRIAR ANÚNCIO</Text>
           </View>
       </View>
-  <View style={styles.container2}>
+    
+    <View style={styles.container2}>
+      <View style={styles.row}>
+        <View style={{flex: 3, marginTop:4}}>
+          <Text style = {styles.descritivo}>Destino:</Text>
+        </View>
+      
+        <View style= {{ flex: 7, borderWidth: 1, borderColor: 'gray', width: '100%', marginBottom: 10 }} >
+          <GooglePlacesAutocomplete
+              placeholder='Procurar'
+              fetchDetails={true}
+              enablePoweredByContainer={false}
+              onPress={handlePlaceSelect}
+              onFail={(error) => console.error(error)}
+              query={{
+                key: config.googleapykey,
+                language: 'en',
+              }}
+              
+              style={{ listView: {height: 100} }}
+            />   
+      </View>
+    </View>
+
     <View style={styles.row}>
-      <Text style = {styles.descritivo}>Destino:</Text>
-      <View style = {{ flex: 7, }}>
+      <View style={{ flex: 4, marginTop: 4 }}> 
+        <Text style = {styles.descritivo3}>Local de Partida:</Text>
+      </View>
+      
+      <View style= {{ flex: 5, borderWidth: 1, borderColor: 'gray', width: '100%', marginBottom: 10}} >
         <GooglePlacesAutocomplete
-            placeholder='Search'
+            placeholder='Procurar'
             fetchDetails={true}
-            onPress={handlePlaceSelect}
+            enablePoweredByContainer={false}
+            onPress={handlePlaceSelect2}
             query={{
               key: config.googleapykey,
               language: 'en',
-          }}
-          />        
+            }}
+            styles={{listView: {height: 100},} }
+          />   
       </View>
-    </View>
+    </View> 
     
     <View style={styles.row }>
       <Text style={styles.descritivo2}>Data:</Text>
@@ -209,7 +265,7 @@ const CreateOffer = () => {
 
     <View style={styles.row}>
       <Text style = {styles.descritivo}>Preço:</Text>
-      <View style = {{ flex: 7}}>
+      <View style = {{ flex: 3}}>
         <TextInput
             style={styles.input}
             value={price}
@@ -217,18 +273,15 @@ const CreateOffer = () => {
             onChangeText={setPrice}
           />
       </View>
+      <View style = {{flex: 4}}>
+        <TouchableOpacity style = {{ flex: 4 , backgroundColor: corNegociavel, borderRadius: 20, justifyContent: 'center', marginBottom: 10, marginLeft: 5 }} onPress={handlePressNegocivelButton}>
+          <Text style = {styles.descritivo4}>Negociável</Text>
+        </TouchableOpacity>
+      </View>
+      
     </View> 
 
-    <View style={styles.row}>
-      <Text style = {styles.descritivo3}>Local de Partida:</Text>
-      <View style = {{ flex: 5}}>
-        <TextInput
-            style={styles.input}
-            value={startLocal}
-            onChangeText={setstartLocal}
-          />
-      </View>
-    </View>   
+      
 
      <View style={styles.row}>
       <Text style = {styles.descritivo}>Desvio:</Text>
@@ -252,13 +305,15 @@ const CreateOffer = () => {
         showsUserLocation={true}
         ref = {mapEl}>
         
-        {destination && 
+        {destination && startLocal &&
           <MapViewDirections
-            origin={origin}
+            origin={startLocal}
             destination={destination}
             apikey={config.googleapykey}
             strokeWidth={3}
+            language="pt"
             onReady={result => {
+              setDistance(result.distance)
               mapEl.current.fitToCoordinates(
                 result.coordinates,{
                     edgePadding:{
@@ -273,15 +328,30 @@ const CreateOffer = () => {
             }
           />
         }
-      </MapView>   
-      
-    </View>
-    
-    
-    
+      </MapView> 
+      <View>
+          {destination &&
+            <Text>Distância: {distance} Km</Text>
+          }
+      </View>
 
-    
-    <Button title="Save" onPress={handleSave} />
+      <View style={[styles.row, {marginTop: 10}]}>
+        <Text style = {styles.descritivo}>Obs.:</Text>
+      </View>
+
+      <View style={{ width: '100%', marginTop: 5 }}>
+        <TextInput
+          style={styles.input}
+          value={obser}
+          onChangeText={setObser}
+        />
+        </View>  
+    </View>
+      <View>
+        <TouchableOpacity style={styles.EntrarConta} onPress = {handleSave} >
+            <Text style={styles.EntrarContaTitle}>Publicar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   </View>
   );

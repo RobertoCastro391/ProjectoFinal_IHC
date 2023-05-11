@@ -8,7 +8,6 @@ import * as ImagePicker from 'expo-image-picker';
 
 import styles from "./CriarConta_Style";
 import { set } from 'react-native-reanimated';
-//import "react-datepicker/dist/react-datepicker.css";
 
 const CriarConta = () => {
 

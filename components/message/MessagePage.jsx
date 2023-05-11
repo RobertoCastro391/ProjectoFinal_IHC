@@ -25,10 +25,10 @@ const MessagePage = () => {
       <View style={{ marginTop: 5 , borderBottomWidth: 0.3, borderBottomColor: '#bdbdbd'}} >
         <TouchableOpacity onPress={(item) => {router.push('messageChatAlexScreen')}} >
           <View style = {{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }} >
-            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfiles} resizeMode='contain' />
+            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfiles} />
             <View style = {styles.containerMessage}>
               <Text style={styles.title}>Alexandre Matias</Text>
-              <Text style={styles.subtitle}>Olá, tudo bem?</Text>
+              <Text style={styles.subtitle}>Ok! Obrigada, até amanhã :)</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end', marginTop: -4 }}>
               <Text style = {{ color: '#BDBDBD', fontSize: 18 }}>há 4m</Text>
@@ -40,10 +40,10 @@ const MessagePage = () => {
       <View style={{ marginTop: 5 , borderBottomWidth: 0.3, borderBottomColor: '#bdbdbd', justifyContent: 'center'}} >
         <TouchableOpacity >
           <View style = {{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }} >
-            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfiles} resizeMode='contain' />
+            <Image source={require('../../assets/images/deusa.jpeg')} style = {styles.cardProfiles} />
             <View style = {styles.containerMessage}>
-              <Text style={styles.title}>Alexandre Matias</Text>
-              <Text style={styles.subtitle}>Olá, tudo bem?</Text>
+              <Text style={styles.title}>Carla Dias</Text>
+              <Text style={styles.subtitle}>Olá! Estarias disponível para sair às 16h no próximo fim-de-semana!</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end', marginTop: -4 }}>
               <Text style = {{ color: '#BDBDBD', fontSize: 18 }}>há 4m</Text>

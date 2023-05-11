@@ -3,6 +3,10 @@ import { StyleSheet } from "react-native";
 import { FONT, SIZES, COLORS } from "../../constants";
 
 const styles = StyleSheet.create({
+
+  container: {
+    marginTop: 20,
+  },
   
   header: {
     flexDirection: 'row', 
@@ -17,21 +21,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 
-  title: {
-    fontWeight : 'bold', 
-    fontSize: 20,
-  },
-
-  subtitle: {
-    marginTop:-1,
-    fontSize: 15,
-  },
-
-  containerMessage: {
-    flex: 2,
-    flexDirection: 'column', 
-    alignItems: 'flex-start', 
-    marginLeft: 15, 
+  message: {
+    fontSize: 18,
   },
 
   VoltarButton: {
@@ -41,54 +32,73 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 
-  EntrarConta: {
-    flexDirection: 'row', 
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: '#5DB075',
-    borderColor: '#fff',
-    borderWidth: 2,
-    borderRadius: 30,
-    height: 55,
-    width: 94 
+  chatReceiver: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: 10
   },
 
-  EntrarContaTitle: {
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
+  chatSender: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    marginTop: 10
   },
 
-  cardProfiles: {
+  cardProfilesReceiver: {
     width: 70, 
     height: 70,
     borderRadius : 40,
-    marginTop : 20,
+    marginTop : 5,
+    marginLeft: 10
   },
 
-  dropdown: {
-    height: 45,
-    width: '90%',
-    marginLeft: 10, 
-    borderColor: 'black',
-    borderWidth: 0.5,
-    borderRadius: 8,
-    paddingHorizontal: 8,
+  cardProfilesSender: {
+    width: 70, 
+    height: 70,
+    borderRadius : 40,
+    marginTop : 5,
+    marginRight: 10
   },
   
-  placeholderStyle: {
+  searchContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#E5E5E5',
+    borderColor: '#fff',
+    borderWidth: 2,
+    borderRadius: 30,
+    height: 65,
+    marginTop: 33,
+  },
+
+  searchWrapper: {
+    marginRight: SIZES.small,
+    borderRadius: SIZES.medium,
+  },
+
+  searchInput: {
+    
     fontSize: 20,
     fontWeight: 'bold',
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: SIZES.medium,
   },
 
-  selectedTextStyle: {
-    fontSize: 20,
-    fontWeight: 'bold'
+  sendButton: {
+    flex: 1,
+    justifyContent: 'center',
+    marginRight: 15,
+    alignItems: 'flex-end'
   },
 
-  inputSearchStyle: {
-    fontSize: 20,
-    fontWeight: 'bold'
+  sendIcon: {
+    width: 45,
+    height: 45,
   },
+
+  footer: {
+    verticalAlign: 'bottom',
+  }
 });
 export default styles;

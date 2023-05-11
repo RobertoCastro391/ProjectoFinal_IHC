@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row', 
     alignItems:'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 10,
   },
   
   headerTitle: {
@@ -16,6 +17,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold'
   },
+  name: {
+    fontSize: 40,
+    color: COLORS.primary,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginTop: 10,  
+  },
+  subtitle: {
+    fontSize: 25,
+    color: COLORS.primary,
+    
+    marginTop: 10,  
+  },
+  info: {
+    fontSize: 20,
+    color: COLORS.primary,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginTop: 5,  
+  },
+
 
   VoltarButton: {
     fontSize: 20,
@@ -32,13 +54,14 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 2,
     borderRadius: 30,
-    height: 55,
-    width: 94 
+    width: '100%',
+    height: 50,
+    marginTop: 10,
   },
 
   EntrarContaTitle: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 
@@ -66,5 +89,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold'
   },
+
+  cardProfiles: {
+    width: 150, 
+    height: 150,
+    borderRadius : 150,
+    marginTop : 25,
+   },
 });
 export default styles;

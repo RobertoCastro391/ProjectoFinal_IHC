@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
       borderColor: '#fff',
       borderWidth: 2,
       borderRadius: 30,
-      marginTop: 40,
       height: 65,
     },
   
@@ -138,15 +137,21 @@ const styles = StyleSheet.create({
     },
     descritivo2:{
       flex: 3, 
-      fontSize: 19,
-       
+      fontSize: 19, 
     },
     descritivo3:{
       flex: 4, 
       fontSize: 19,
       justifyContent: 'center',
-      marginTop: 5,
+      marginTop: 8,
     },
+    descritivo4:{
+      fontSize: 20,
+      fontWeight: 'bold', 
+      textAlign: 'center',
+      verticalAlign: 'center',
+    },
+    
     
   
   });

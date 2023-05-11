@@ -9,7 +9,7 @@ const MinhasOfertas = () => {
   const router = useRouter();
 
   return (
-    <View>
+    <View style={styles.container}>
       
       <View style = {styles.header} >
         <View style = {{ flex: 0, alignItems: 'flex-start' }} >
@@ -21,13 +21,6 @@ const MinhasOfertas = () => {
             <Text style={styles.headerTitle}>Minhas Ofertas</Text>
           </View>
       </View>
-
-      <View style = {styles.header} >
-        <Text>
-          Implementar aqui a cena das mensagens 
-        </Text>
-      </View>
-     
     </View>
   );
 }

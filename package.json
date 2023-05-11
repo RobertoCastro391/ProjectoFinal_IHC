@@ -39,7 +39,8 @@
     "react-native-talk-balloon": "^1.0.3",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
-    "with": "^7.0.2"
+    "with": "^7.0.2",
+    "expo-updates": "~0.16.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

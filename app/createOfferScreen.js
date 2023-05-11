@@ -16,7 +16,7 @@ const createOfferScreen = () => {
                     headerTitle: ''
                 }}
             />
-            <ScrollView showsVerticalScrollIndicator={true} >
+            <ScrollView keyboardShouldPersistTaps='always'>
                 <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
                  
                     <Createoffer />
