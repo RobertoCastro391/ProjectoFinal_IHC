@@ -23,7 +23,7 @@ const initialPagev2Screen = () => {
 
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
-                    <Logo />
+                    
                     <InitialPagev2 />
                 </View>
             </ScrollView>
