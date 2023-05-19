@@ -56,5 +56,6 @@
   },
   "name": "projectofinal_ihc",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "homepage": "https://RobertoCastro.gitlab.io/UNIRides"
 }
