@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Text,  TouchableOpacity, Image } from "react-native";
-import { Searchbar, Card } from 'react-native-paper';
+import { Searchbar, Card,Modal,Provider,Portal, } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from "expo-router";
@@ -16,6 +16,14 @@ import { Logo } from '../../components';
 const InitialPage = () => {
 
   const router = useRouter();
+
+  const [visible, setVisible] = useState(false);
+  const showModal = () => {
+    setVisible(true);
+    handlePlaceSelect1_1();
+    handlePlaceSelect1_2();
+  }
+  const hideModal = () => setVisible(false);
 
   const [destination, setDestination] = useState(null);
   const [startLocal, setstartLocal] = useState('');
@@ -276,8 +284,6 @@ const InitialPage = () => {
     setShowother2(false);
     setShowother3(false);
     setShowother4(false);
-    handlePlaceSelect1_1();
-    handlePlaceSelect1_2();
   }
 
   const handlePressInfo2 = () => {
@@ -309,7 +315,9 @@ const InitialPage = () => {
   }
 
   return (
+
     <View style={styles.container}>
+         
       
       <TouchableOpacity style = {{ marginTop: -25, marginBottom: 15 }} onPress = {handleClearFilter} >
         <Logo />
@@ -382,12 +390,14 @@ const InitialPage = () => {
           />
         </View>
       </View>
-
+       
       <View style={{ alignItems: "center", marginTop: 13 }}>
-        
+              
         {showFilterCard1 && showSearchCard1 && showDateCard1 && (
+          
           <View style={styles.card}>
           <Card>
+          
           <Card.Title
               title="Maria Joana"
               subtitle="Universidade de Coimbra"
@@ -442,14 +452,28 @@ const InitialPage = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Viseu
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>Café Avenida, Coimbra</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text
+                        style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
+                      >
+                        Viseu
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>Café Avenida, Coimbra</Text>
+                    </View>
+                    
+                    
+                    <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={showModal} >
+                      <Image
+                      source={require("../../assets/icons/map2.png")}
+                      style={{
+                        width: 40,
+                        height: 45,
+                      }}
+                      resizeMode='contain'
+                      />
+                    </TouchableOpacity>
+                    
                 </View>
                 <View
                   style={{
@@ -813,7 +837,7 @@ const InitialPage = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
+                  <View style={{ flex: 5, flexDirection: "column" }}>
                     <Text
                       style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
                     >
@@ -821,6 +845,17 @@ const InitialPage = () => {
                     </Text>
                     <Text style={{ marginTop: 6, fontSize: 18 }}>Escola de Psicologia da UM</Text>
                   </View>
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10, alignItems: 'center' }}>
+                      <Image
+                      source={require("../../assets/icons/map2.png")}
+                      style={{
+                        width: 40,
+                        height: 45,
+                       
+                      }}
+                      resizeMode='contain'
+                      />
+                    </TouchableOpacity>
                 </View>
                 <View
                   style={{
@@ -1185,7 +1220,7 @@ const InitialPage = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
+                  <View style={{ flex: 6, flexDirection: "column" }}>
                     <Text
                       style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
                     >
@@ -1193,6 +1228,16 @@ const InitialPage = () => {
                     </Text>
                     <Text style={{ marginTop: 6, fontSize: 18 }}>Convívio</Text>
                   </View>
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} >
+                      <Image
+                      source={require("../../assets/icons/map2.png")}
+                      style={{
+                        width: 40,
+                        height: 45,
+                      }}
+                      resizeMode='contain'
+                      />
+                    </TouchableOpacity>
                 </View>
                 <View
                   style={{
@@ -1557,7 +1602,7 @@ const InitialPage = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
+                  <View style={{ flex: 6, flexDirection: "column" }}>
                     <Text
                       style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
                     >
@@ -1565,6 +1610,16 @@ const InitialPage = () => {
                     </Text>
                     <Text style={{ marginTop: 6, fontSize: 18 }}>DETI_UA</Text>
                   </View>
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }}>
+                      <Image
+                      source={require("../../assets/icons/map2.png")}
+                      style={{
+                        width: 40,
+                        height: 45,
+                      }}
+                      resizeMode='contain'
+                      />
+                    </TouchableOpacity>
                 </View>
                 <View
                   style={{
@@ -1871,8 +1926,46 @@ const InitialPage = () => {
           </Card>
         </View>
         )}
+        
       </View>
+      
+      <Modal  visible={visible} onDismiss={hideModal} sytle={styles.containerStyle}>
+        <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+        <MapView
+                      style={{height: 300, width: '100%'}}
+                      ref = {mapEl}>
+                      
+                      {destination && startLocal &&
+                        <MapViewDirections
+                          origin={startLocal}
+                          destination={destination}
+                          apikey={config.googleapykey}
+                          strokeWidth={3}
+                          language="pt"
+                          onReady={result => {
+                            mapEl.current.fitToCoordinates(
+                              result.coordinates,{
+                                  edgePadding:{
+                                      top:50,
+                                      bottom:50,
+                                      left:50,
+                                      right:50
+                                  } 
+                              }
+                            )
+                            }
+                          }
+                        />
+                      }
+                    </MapView>
+        </View>
+        
+      </Modal>
+    
+         
+      
     </View>
+    
   );
 }
 
