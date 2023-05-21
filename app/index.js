@@ -5,11 +5,23 @@ import { useRouter, Stack } from 'expo-router';
 
 import { LogIn, SingUp, Logo } from '../components'
 
+
+
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import reducer from "../redux/reducer";
+
 const Home = () => {
 
     const router = useRouter();
 
+    const store = configureStore({
+        reducer,
+      });
+
     return (
+
+    <Provider store={store}>  
         <SafeAreaView style={{ flex: 1 , backgroundColor: '#fff' }}>
             
             <Stack.Screen
@@ -30,6 +42,7 @@ const Home = () => {
                 </View>
             </ScrollView>
         </SafeAreaView>
+    </Provider>
     )
 }
 export default Home;

@@ -12,11 +12,13 @@ import MapViewDirections from 'react-native-maps-directions';
 import styles from "./initialPage_Style";
 import { Logo } from '../../components';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleOpenModel } from '../../redux/actions';
+
 
 const InitialPage = () => {
 
   const router = useRouter();
-
   const [visible, setVisible] = useState(false);
   const showModal = () => {
     setVisible(true);
@@ -313,6 +315,17 @@ const InitialPage = () => {
     handlePlaceSelect4_1();
     handlePlaceSelect4_2();
   }
+
+  const booleanValue = useSelector(state => state.booleanValue);
+  const dispatch = useDispatch();
+
+
+  // const handleToggle = () => {
+  //   dispatch(toggleOpenModel());
+  // }
+  console.log(booleanValue);
+
+
 
   return (
 
