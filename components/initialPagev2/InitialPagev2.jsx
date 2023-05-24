@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text,  TouchableOpacity, Image } from "react-native";
+import { View, Text,  TouchableOpacity, Image, Modal, TouchableWithoutFeedback } from "react-native";
 import { Searchbar, Card } from 'react-native-paper';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -8,7 +8,6 @@ import TalkBalloon from "react-native-talk-balloon";
 import MapView from 'react-native-maps';
 import config from "../config/index.json";
 import MapViewDirections from 'react-native-maps-directions';
-
 import styles from "./initialPagev2_Style";
 import { Logo } from '../../components';
 
@@ -16,106 +15,81 @@ const InitialPagev2 = () => {
 
     const router = useRouter();
 
-    const handlePlaceSelect1_1 = (data, details = null) => {
-      setDestination({
-        latitude: 40.640909,
-        longitude: -8.653683,
-        latitudeDelta: 0.000922,
-        longitudeDelta: 0.000421,
-      });
-      console.log(destination);
-    };
-  
-    const handlePlaceSelect1_2 = (data, details = null) => {
-      setstartLocal({
-        latitude: 42.077077, 
-        longitude: -8.480854,
-        latitudeDelta: 0.000922,
-        longitudeDelta: 0.000421,
-      });
-      console.log(startLocal);
-   
+    const [modalVisible1, setModalVisible1] = useState(false);
+    const [modalVisible2, setModalVisible2] = useState(false);
+    const [modalVisible3, setModalVisible3] = useState(false);
+    const [modalVisible4, setModalVisible4] = useState(false);
+    const [modalVisible5, setModalVisible5] = useState(false);
+
+    const handleModal1 = () => {
+      setModalVisible1(!modalVisible1); 
+      setDestination({ latitude: 40.640506, longitude:  -8.653541, latitudeDelta: 0.000922, longitudeDelta: 0.000421,});  
+      setstartLocal({ latitude: 42.077090, longitude: -8.480778, latitudeDelta: 0.000922, longitudeDelta: 0.000421 }); 
     }
-    const handlePlaceSelect2_1 = (data, details = null) => {
+  
+    const handleModal2 = () => {
+      setModalVisible2(!modalVisible2); 
       setDestination({
-        latitude: 40.656281, 
+        latitude: 40.656281,
         longitude: -7.912629,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(destination);
-    };
   
-    const handlePlaceSelect2_2 = (data, details = null) => {
       setstartLocal({
         latitude: 40.208902, 
         longitude: -8.414539,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(startLocal);
-   
     }
-    const handlePlaceSelect3_1 = (data, details = null) => {
+  
+    const handleModal3 = () => {
+      setModalVisible3(!modalVisible3);
       setDestination({
         latitude: 41.543933, 
         longitude: -8.574213,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(destination);
-    };
-  
-    const handlePlaceSelect3_2 = (data, details = null) => {
       setstartLocal({
         latitude: 41.559890, 
         longitude: -8.400287,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(startLocal);
-   
     }
-    const handlePlaceSelect4_1 = (data, details = null) => {
+  
+    const handleModal4 = () => {
+      setModalVisible4(!modalVisible4); 
       setDestination({
         latitude: 42.077120, 
         longitude: -8.482318,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(destination);
-    };
-  
-    const handlePlaceSelect4_2 = (data, details = null) => {
       setstartLocal({
         latitude: 40.633983, 
         longitude: -8.648410,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(startLocal);
-   
     }
 
-    const handlePlaceSelect5_1 = (data, details = null) => {
+    const handleModal5 = () => {
+      setModalVisible4(!modalVisible4); 
       setDestination({
         latitude: 42.077120, 
         longitude: -8.482318,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(destination);
-    };
-  
-    const handlePlaceSelect5_2 = (data, details = null) => {
       setstartLocal({
         latitude: 40.633279, 
         longitude: -8.659332,
         latitudeDelta: 0.000922,
         longitudeDelta: 0.000421,
       });
-      console.log(startLocal);
-   
     }
 
     const mapEl = useRef(null);
@@ -153,21 +127,21 @@ const InitialPagev2 = () => {
     const [showDateCard5, setShowDateCard5] = useState(true);
 
     const handleDate = (value) => {
-      if (value == '17/05/2023') {
+      if (value == '17/5/2023') {
         setShowDateCard1(true);
         setShowDateCard2(false);
         setShowDateCard3(false);
         setShowDateCard4(false);
         setShowDateCard5(false);
       }
-      else if (value == '11/05/2023') {
+      else if (value == '11/5/2023') {
         setShowDateCard1(false);
         setShowDateCard2(true);
         setShowDateCard3(false);
         setShowDateCard4(false);
         setShowDateCard5(false);
       }
-      else if (value == '12/05/2023') {
+      else if (value == '12/5/2023') {
         setShowDateCard1(false);
         setShowDateCard2(false);
         setShowDateCard3(true);
@@ -182,11 +156,11 @@ const InitialPagev2 = () => {
         setShowDateCard5(true);
       }
       else {
-        setShowDateCard1(true);
-        setShowDateCard2(true);
-        setShowDateCard3(true);
-        setShowDateCard4(true);
-        setShowDateCard5(true);
+        setShowDateCard1(false);
+        setShowDateCard2(false);
+        setShowDateCard3(false);
+        setShowDateCard4(false);
+        setShowDateCard5(false);
       }
 
     }
@@ -266,10 +240,7 @@ const InitialPagev2 = () => {
       { label: 'Horário: __H:__M', value: '9' },
     ];
 
-    
-  
     const [value, setValue] = useState(null);
-    
   
     const [searchQuery, setSearchQuery] = React.useState('');
   
@@ -278,8 +249,6 @@ const InitialPagev2 = () => {
       console.log(query);
       handleSearchBar(query);
     }
-
-    
   
     const LeftContent = props => <Image source={require("../../assets/images/alexandre.png")} style = {styles.cardProfiles} />
     const LeftContent1 = props => <Image source={require("../../assets/images/mulher1.jpeg")} style = {styles.cardProfiles} />
@@ -315,18 +284,14 @@ const InitialPagev2 = () => {
       setShowother3(false);
       setShowother4(false);
       setShowother5(false);
-      handlePlaceSelect1_1();
-      handlePlaceSelect1_2();
     }
+
     const handlePressInfo2 = () => {
       setShowother1(false);
       setShowother2(!showother2)
       setShowother3(false);
       setShowother4(false);
       setShowother5(false)
-      handlePlaceSelect2_1();
-      handlePlaceSelect2_2();
-      
     }
 
     const handlePressInfo3 = () => {
@@ -335,8 +300,6 @@ const InitialPagev2 = () => {
       setShowother3(!showother3);
       setShowother4(false)
       setShowother5(false)
-      handlePlaceSelect3_1();
-      handlePlaceSelect3_2();
     }
 
     const handlePressInfo4 = () => {
@@ -345,8 +308,6 @@ const InitialPagev2 = () => {
       setShowother3(false);
       setShowother4(!showother4);
       setShowother5(false)
-      handlePlaceSelect4_1();
-      handlePlaceSelect4_2();
     }
 
     const handlePressInfo5 = () => {
@@ -355,8 +316,6 @@ const InitialPagev2 = () => {
       setShowother3(false);
       setShowother4(false);
       setShowother5(!showother5);
-      handlePlaceSelect5_1();
-      handlePlaceSelect5_2();
     }
 
     const handleClearFilter = () => {
@@ -364,16 +323,19 @@ const InitialPagev2 = () => {
       setShowFilterCard2(true);
       setShowFilterCard3(true);
       setShowFilterCard4(true);
+      setShowFilterCard5(true);
       
       setShowDateCard1(true);
       setShowDateCard2(true);
       setShowDateCard3(true);
       setShowDateCard4(true);
+      setShowDateCard5(true);
       
       setShowSearchCard1(true);
       setShowSearchCard2(true);
       setShowSearchCard3(true);
       setShowSearchCard4(true);
+      setShowSearchCard5(true);
       setValue(null);
       setSearchQuery(null);
       setDate(new Date());
@@ -500,7 +462,8 @@ const InitialPagev2 = () => {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <View style={{ flexDirection: "row", marginTop: 5 }}>
+
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
                   <Image
                     source={require("../../assets/icons/route.png")}
                     style={{
@@ -511,15 +474,71 @@ const InitialPagev2 = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Aveiro
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>Café das Termas, Monção</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}>
+                        Aveiro
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>Café das Termas, Monção</Text>
+                    </View>
+
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible1}
+                      onRequestClose={() => {
+                          Alert.alert('Modal has been closed.');
+                          setModalVisible1(!modalVisible1);
+                      }}>
+                      <TouchableOpacity 
+                          style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 15 }}
+                          activeOpacity={1}  // This ensures the opacity doesn't change when clicked
+                          onPressOut={() => setModalVisible1(!modalVisible1)}  // This dismisses the modal when the background is clicked
+                      >
+                          <TouchableWithoutFeedback> 
+                              <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+                                  <MapView
+                                      style={{height: 300, width: '100%'}}
+                                      ref = {mapEl}>
+                                      {destination && startLocal &&
+                                          <MapViewDirections
+                                              origin={startLocal}
+                                              destination={destination}
+                                              apikey={config.googleapykey}
+                                              strokeWidth={3}
+                                              language="pt"
+                                              onReady={result => {
+                                                  mapEl.current.fitToCoordinates(
+                                                      result.coordinates, {
+                                                          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                                                          animated: true,
+                                                      }
+                                                  )
+                                              }}
+                                          />
+                                      }
+                                  </MapView>
+                              </View>
+                          </TouchableWithoutFeedback>
+                      </TouchableOpacity>
+                  </Modal>
+
+                  
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={handleModal1}> 
+                      <Image
+                          source={require("../../assets/icons/map2.png")}
+                          style={{
+                              width: 40,
+                              height: 45,
+                          }}
+                          resizeMode='contain'
+                      />
+                  </TouchableOpacity>
+                    
                 </View>
+                
+                
+                
                 <View
                   style={{
                     flexDirection: "row",
@@ -644,35 +663,6 @@ const InitialPagev2 = () => {
             {showother1 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
-                  
-                <MapView
-                    style={{height: 300, width: '100%',}}
-                    ref = {mapEl}>
-                    
-                    {destination && startLocal &&
-                      <MapViewDirections
-                        origin={startLocal}
-                        destination={destination}
-                        apikey={config.googleapykey}
-                        strokeWidth={3}
-                        language="pt"
-                        onReady={result => {
-                          mapEl.current.fitToCoordinates(
-                            result.coordinates,{
-                                edgePadding:{
-                                    top:50,
-                                    bottom:50,
-                                    left:50,
-                                    right:50
-                                } 
-                            }
-                          )
-                          }
-                        }
-                      />
-                    }
-                  </MapView> 
-
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -725,13 +715,13 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </Card.Content>
                 </Card>
-                <Card style={{ width: "95%", marginLeft: 9, marginTop:6 }} mode="outlined">
+                <Card style={{ width: "95%", marginLeft: 9, marginTop: 6, marginBottom: 10 }} mode="outlined">
                   <Card.Title
                     title="Comentários:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -867,7 +857,8 @@ const InitialPagev2 = () => {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <View style={{ flexDirection: "row", marginTop: 5 }}>
+                
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
                   <Image
                     source={require("../../assets/icons/route.png")}
                     style={{
@@ -878,15 +869,69 @@ const InitialPagev2 = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Viseu
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>Café Avenida, Coimbra</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}>
+                        Viseu
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>Café Avenida, Coimbra</Text>
+                    </View>
+
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible2}
+                      onRequestClose={() => {
+                          Alert.alert('Modal has been closed.');
+                          setModalVisible2(!modalVisible2);
+                      }}>
+                      <TouchableOpacity 
+                          style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 15 }}
+                          activeOpacity={1}  // This ensures the opacity doesn't change when clicked
+                          onPressOut={() => setModalVisible2(!modalVisible2)}  // This dismisses the modal when the background is clicked
+                      >
+                          <TouchableWithoutFeedback> 
+                              <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+                                  <MapView
+                                      style={{height: 300, width: '100%'}}
+                                      ref = {mapEl}>
+                                      {destination && startLocal &&
+                                          <MapViewDirections
+                                              origin={startLocal}
+                                              destination={destination}
+                                              apikey={config.googleapykey}
+                                              strokeWidth={3}
+                                              language="pt"
+                                              onReady={result => {
+                                                  mapEl.current.fitToCoordinates(
+                                                      result.coordinates, {
+                                                          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                                                          animated: true,
+                                                      }
+                                                  )
+                                              }}
+                                          />
+                                      }
+                                  </MapView>
+                              </View>
+                          </TouchableWithoutFeedback>
+                      </TouchableOpacity>
+                  </Modal>
+
+                  
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={handleModal2}> 
+                      <Image
+                          source={require("../../assets/icons/map2.png")}
+                          style={{
+                              width: 40,
+                              height: 45,
+                          }}
+                          resizeMode='contain'
+                      />
+                  </TouchableOpacity>
+                    
                 </View>
+
                 <View
                   style={{
                     flexDirection: "row",
@@ -1016,33 +1061,7 @@ const InitialPagev2 = () => {
             {showother2 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
-                <MapView
-                    style={{height: 300, width: '100%',}}
-                    ref = {mapEl}>
-                    
-                    {destination && startLocal &&
-                      <MapViewDirections
-                        origin={startLocal}
-                        destination={destination}
-                        apikey={config.googleapykey}
-                        strokeWidth={3}
-                        language="pt"
-                        onReady={result => {
-                          mapEl.current.fitToCoordinates(
-                            result.coordinates,{
-                                edgePadding:{
-                                    top:50,
-                                    bottom:50,
-                                    left:50,
-                                    right:50
-                                } 
-                            }
-                          )
-                          }
-                        }
-                      />
-                    }
-                  </MapView> 
+                
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -1095,13 +1114,13 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </Card.Content>
                 </Card>
-                <Card style={{ width: "95%", marginLeft: 9, marginTop:6 }} mode="outlined">
+                <Card style={{  width: "95%", marginLeft: 9, marginTop: 6, marginBottom: 10 }} mode="outlined">
                   <Card.Title
                     title="Comentários:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent2} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -1142,7 +1161,7 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent4} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"
@@ -1237,7 +1256,8 @@ const InitialPagev2 = () => {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <View style={{ flexDirection: "row", marginTop: 5 }}>
+                
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
                   <Image
                     source={require("../../assets/icons/route.png")}
                     style={{
@@ -1248,15 +1268,69 @@ const InitialPagev2 = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Manhente
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>Escola de Psicologia da UM</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}>
+                        Manhente
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>Escola de Psicologia UM</Text>
+                    </View>
+
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible3}
+                      onRequestClose={() => {
+                          Alert.alert('Modal has been closed.');
+                          setModalVisible3(!modalVisible3);
+                      }}>
+                      <TouchableOpacity 
+                          style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 15 }}
+                          activeOpacity={1}  // This ensures the opacity doesn't change when clicked
+                          onPressOut={() => setModalVisible3(!modalVisible3)}  // This dismisses the modal when the background is clicked
+                      >
+                          <TouchableWithoutFeedback> 
+                              <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+                                  <MapView
+                                      style={{height: 300, width: '100%'}}
+                                      ref = {mapEl}>
+                                      {destination && startLocal &&
+                                          <MapViewDirections
+                                              origin={startLocal}
+                                              destination={destination}
+                                              apikey={config.googleapykey}
+                                              strokeWidth={3}
+                                              language="pt"
+                                              onReady={result => {
+                                                  mapEl.current.fitToCoordinates(
+                                                      result.coordinates, {
+                                                          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                                                          animated: true,
+                                                      }
+                                                  )
+                                              }}
+                                          />
+                                      }
+                                  </MapView>
+                              </View>
+                          </TouchableWithoutFeedback>
+                      </TouchableOpacity>
+                  </Modal>
+
+                  
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={handleModal3}> 
+                      <Image
+                          source={require("../../assets/icons/map2.png")}
+                          style={{
+                              width: 40,
+                              height: 45,
+                          }}
+                          resizeMode='contain'
+                      />
+                  </TouchableOpacity>
+                    
                 </View>
+
                 <View
                   style={{
                     flexDirection: "row",
@@ -1386,33 +1460,7 @@ const InitialPagev2 = () => {
             {showother3 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
-                <MapView
-                    style={{height: 300, width: '100%',}}
-                    ref = {mapEl}>
-                    
-                    {destination && startLocal &&
-                      <MapViewDirections
-                        origin={startLocal}
-                        destination={destination}
-                        apikey={config.googleapykey}
-                        strokeWidth={3}
-                        language="pt"
-                        onReady={result => {
-                          mapEl.current.fitToCoordinates(
-                            result.coordinates,{
-                                edgePadding:{
-                                    top:50,
-                                    bottom:50,
-                                    left:50,
-                                    right:50
-                                } 
-                            }
-                          )
-                          }
-                        }
-                      />
-                    }
-                  </MapView> 
+                
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -1465,13 +1513,13 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </Card.Content>
                 </Card>
-                <Card style={{ width: "95%", marginLeft: 9, marginTop:6 }} mode="outlined">
+                <Card style={{  width: "95%", marginLeft: 9, marginTop: 6, marginBottom: 10 }} mode="outlined">
                   <Card.Title
                     title="Comentários:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent4} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -1512,7 +1560,7 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent3} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"
@@ -1607,7 +1655,7 @@ const InitialPagev2 = () => {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <View style={{ flexDirection: "row", marginTop: 5 }}>
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
                   <Image
                     source={require("../../assets/icons/route.png")}
                     style={{
@@ -1618,14 +1666,67 @@ const InitialPagev2 = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Monção
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>Convívio</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}>
+                        Monção
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>Convívio</Text>
+                    </View>
+
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible4}
+                      onRequestClose={() => {
+                          Alert.alert('Modal has been closed.');
+                          setModalVisible4(!modalVisible4);
+                      }}>
+                      <TouchableOpacity 
+                          style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 15 }}
+                          activeOpacity={1}  // This ensures the opacity doesn't change when clicked
+                          onPressOut={() => setModalVisible4(!modalVisible4)}  // This dismisses the modal when the background is clicked
+                      >
+                          <TouchableWithoutFeedback> 
+                              <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+                                  <MapView
+                                      style={{height: 300, width: '100%'}}
+                                      ref = {mapEl}>
+                                      {destination && startLocal &&
+                                          <MapViewDirections
+                                              origin={startLocal}
+                                              destination={destination}
+                                              apikey={config.googleapykey}
+                                              strokeWidth={3}
+                                              language="pt"
+                                              onReady={result => {
+                                                  mapEl.current.fitToCoordinates(
+                                                      result.coordinates, {
+                                                          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                                                          animated: true,
+                                                      }
+                                                  )
+                                              }}
+                                          />
+                                      }
+                                  </MapView>
+                              </View>
+                          </TouchableWithoutFeedback>
+                      </TouchableOpacity>
+                  </Modal>
+
+                  
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={handleModal4}> 
+                      <Image
+                          source={require("../../assets/icons/map2.png")}
+                          style={{
+                              width: 40,
+                              height: 45,
+                          }}
+                          resizeMode='contain'
+                      />
+                  </TouchableOpacity>
+                    
                 </View>
                 <View
                   style={{
@@ -1756,33 +1857,7 @@ const InitialPagev2 = () => {
             {showother4 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
-                <MapView
-                    style={{height: 300, width: '100%',}}
-                    ref = {mapEl}>
-                    
-                    {destination && startLocal &&
-                      <MapViewDirections
-                        origin={startLocal}
-                        destination={destination}
-                        apikey={config.googleapykey}
-                        strokeWidth={3}
-                        language="pt"
-                        onReady={result => {
-                          mapEl.current.fitToCoordinates(
-                            result.coordinates,{
-                                edgePadding:{
-                                    top:50,
-                                    bottom:50,
-                                    left:50,
-                                    right:50
-                                } 
-                            }
-                          )
-                          }
-                        }
-                      />
-                    }
-                  </MapView> 
+                  
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -1835,13 +1910,13 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </Card.Content>
                 </Card>
-                <Card style={{ width: "95%", marginLeft: 9, marginTop:6 }} mode="outlined">
+                <Card style={{  width: "95%", marginLeft: 9, marginTop: 6, marginBottom: 10 }} mode="outlined">
                   <Card.Title
                     title="Comentários:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent2} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -1882,7 +1957,7 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent4} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"
@@ -1977,7 +2052,7 @@ const InitialPagev2 = () => {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <View style={{ flexDirection: "row", marginTop: 5 }}>
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
                   <Image
                     source={require("../../assets/icons/route.png")}
                     style={{
@@ -1988,14 +2063,67 @@ const InitialPagev2 = () => {
                       marginRight: -16,
                     }}
                   />
-                  <View style={{ flexDirection: "column" }}>
-                    <Text
-                      style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}
-                    >
-                      Monção
-                    </Text>
-                    <Text style={{ marginTop: 6, fontSize: 18 }}>DETI-UA</Text>
-                  </View>
+                     
+                    <View style={{ flex: 6, flexDirection: "column" }}>
+                      <Text style={{ marginTop: 8, fontSize: 20, fontWeight: "500" }}>
+                        Monção
+                      </Text>
+                      <Text style={{ marginTop: 6, fontSize: 18 }}>DETI-UA</Text>
+                    </View>
+
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible2}
+                      onRequestClose={() => {
+                          Alert.alert('Modal has been closed.');
+                          setModalVisible5(!modalVisible5);
+                      }}>
+                      <TouchableOpacity 
+                          style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 15 }}
+                          activeOpacity={1}  // This ensures the opacity doesn't change when clicked
+                          onPressOut={() => setModalVisible5(!modalVisible5)}  // This dismisses the modal when the background is clicked
+                      >
+                          <TouchableWithoutFeedback> 
+                              <View style={{ padding: 10, backgroundColor: 'white', borderRadius: 20 }} >
+                                  <MapView
+                                      style={{height: 300, width: '100%'}}
+                                      ref = {mapEl}>
+                                      {destination && startLocal &&
+                                          <MapViewDirections
+                                              origin={startLocal}
+                                              destination={destination}
+                                              apikey={config.googleapykey}
+                                              strokeWidth={3}
+                                              language="pt"
+                                              onReady={result => {
+                                                  mapEl.current.fitToCoordinates(
+                                                      result.coordinates, {
+                                                          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                                                          animated: true,
+                                                      }
+                                                  )
+                                              }}
+                                          />
+                                      }
+                                  </MapView>
+                              </View>
+                          </TouchableWithoutFeedback>
+                      </TouchableOpacity>
+                  </Modal>
+
+                  
+                  <TouchableOpacity style={{ flex: 2, marginTop: 10 }} onPress={handleModal5}> 
+                      <Image
+                          source={require("../../assets/icons/map2.png")}
+                          style={{
+                              width: 40,
+                              height: 45,
+                          }}
+                          resizeMode='contain'
+                      />
+                  </TouchableOpacity>
+                    
                 </View>
                 <View
                   style={{
@@ -2126,33 +2254,7 @@ const InitialPagev2 = () => {
             {showother5 && (
               <>
                 <Card style={{ width: "95%", marginLeft: 9 }} mode="outlined">
-                <MapView
-                    style={{height: 300, width: '100%',}}
-                    ref = {mapEl}>
-                    
-                    {destination && startLocal &&
-                      <MapViewDirections
-                        origin={startLocal}
-                        destination={destination}
-                        apikey={config.googleapykey}
-                        strokeWidth={3}
-                        language="pt"
-                        onReady={result => {
-                          mapEl.current.fitToCoordinates(
-                            result.coordinates,{
-                                edgePadding:{
-                                    top:50,
-                                    bottom:50,
-                                    left:50,
-                                    right:50
-                                } 
-                            }
-                          )
-                          }
-                        }
-                      />
-                    }
-                  </MapView> 
+                
                   <Card.Title
                     title="Motorista:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
@@ -2205,13 +2307,13 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </Card.Content>
                 </Card>
-                <Card style={{ width: "95%", marginLeft: 9, marginTop:6 }} mode="outlined">
+                <Card style={{  width: "95%", marginLeft: 9, marginTop: 6, marginBottom: 10 }} mode="outlined">
                   <Card.Title
                     title="Comentários:"
                     titleStyle={{ fontWeight: "bold", fontSize: 22 }}
                   />
                   <View style={{ flexDirection: "row", marginBottom: 5 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-60, marginRight:10}} />
+                    <Card.Title left={LeftContent2} style={{ marginTop:-60, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="20%"
@@ -2252,7 +2354,7 @@ const InitialPagev2 = () => {
                     </TalkBalloon>
                   </View>
                   <View style={{ flexDirection: "row", marginTop:-10 }}>
-                    <Card.Title left={LeftContent} style={{ marginTop:-40, marginRight:10}} />
+                    <Card.Title left={LeftContent4} style={{ marginTop:-40, marginRight:10}} />
                     <TalkBalloon
                       triangleDirection="left"
                       triangleOffSet="25%"

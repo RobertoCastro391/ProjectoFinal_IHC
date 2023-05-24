@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRouter } from "expo-router";
 import { View, TouchableOpacity, Image } from 'react-native';
-
 import styles from './Footer_style';
 
 const Footer = () => {

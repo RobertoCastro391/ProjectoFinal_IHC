@@ -5,9 +5,7 @@ import { useRouter } from "expo-router";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Checkbox from 'expo-checkbox';
 import * as ImagePicker from 'expo-image-picker';
-
 import styles from "./CriarConta_Style";
-import { set } from 'react-native-reanimated';
 
 const CriarConta = () => {
 

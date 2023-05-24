@@ -29,23 +29,30 @@ const ChatAlexandre = () => {
       </View>
 
       <View  >
+      <View style={styles.chatSender}>
+          <TalkBalloon triangleDirection='bottom' triangleOffSet='69%' backgroundColor={'#5DB075'} >
+            <Text style = {styles.message}>Ola! Vi o teu anúncio da boleia que estas a oferecer estou interessada!</Text>
+          </TalkBalloon>
+          <Image source={require('../../assets/images/rita.jpg')} style = {styles.cardProfilesSender} />
+        </View>
+
         <View style={styles.chatReceiver}>
           <TalkBalloon triangleDirection='bottom' triangleOffSet='10%' backgroundColor={'#F6F6F6'} >
-            <Text style = {styles.message}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis.</Text>
+            <Text style = {styles.message}>Olá! Tudo bem? Sim eu estou a oferecer a boleia!</Text>
           </TalkBalloon>
           <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfilesReceiver} />
         </View>
 
         <View style={styles.chatSender}>
           <TalkBalloon triangleDirection='bottom' triangleOffSet='69%' backgroundColor={'#5DB075'} >
-            <Text style = {styles.message} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis.</Text>
+            <Text style = {styles.message} >Ótimo, então combinado!</Text>
           </TalkBalloon>
-          <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfilesSender} />
+          <Image source={require('../../assets/images/rita.jpg')} style = {styles.cardProfilesSender} />
         </View>
             
         <View style={styles.chatReceiver}>
           <TalkBalloon triangleDirection='bottom' triangleOffSet='10%' backgroundColor={'#F6F6F6'} >
-            <Text style = {styles.message}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis.</Text>
+            <Text style = {styles.message}>Ok! Obrigada, até amanhã!</Text>
           </TalkBalloon>
           <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfilesReceiver} />
         </View>
@@ -55,13 +62,11 @@ const ChatAlexandre = () => {
             <TalkBalloon triangleDirection='bottom' triangleOffSet='69%' backgroundColor={'#5DB075'} >
               <Text style = {styles.message}>{mensagem}</Text>
             </TalkBalloon>
-            <Image source={require('../../assets/images/alexandre.png')} style = {styles.cardProfilesSender} />
+            <Image source={require('../../assets/images/rita.jpg')} style = {styles.cardProfilesSender} />
           </View>
         )}
-
       </View>
-
-        
+      
       <View style={styles.searchContainer}>
         <View styles={styles.searchWrapper}>
           <TextInput

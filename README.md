@@ -4,8 +4,9 @@ Use [`expo-router`](https://expo.github.io/router) to build native navigation us
 
 ## 🚀 How to use
 
-```sh
-npx create-react-native-app -t with-router
+```
+Open terminal and use:
+npx expo start
 ```
 
 ## 📝 Notes

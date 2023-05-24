@@ -1,6 +1,5 @@
-import React from 'react';
 import { StyleSheet } from "react-native";
-import { FONT, SIZES, COLORS } from "../../constants";
+import { COLORS } from "../../constants";
 
 const styles = StyleSheet.create({
   
@@ -16,6 +15,23 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+
+  title: {
+    fontWeight : 'bold', 
+    fontSize: 20,
+  },
+
+  subtitle: {
+    marginTop: 15,
+    fontSize: 15,
+  },
+
+  containerMessage: {
+    flex: 2,
+    flexDirection: 'column', 
+    alignItems: 'flex-start', 
+    marginLeft: 15, 
   },
 
   VoltarButton: {
@@ -41,6 +57,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+
+  cardProfiles: {
+    width: 70, 
+    height: 70,
+    borderRadius : 40,
+    marginTop : 20,
   },
 
   dropdown: {

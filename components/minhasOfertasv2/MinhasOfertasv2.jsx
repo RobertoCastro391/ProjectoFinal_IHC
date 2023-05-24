@@ -1,14 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 import styles from "./minhasOfertas_Stylev2";
-import { Card } from 'react-native-paper';
-import TalkBalloon from "react-native-talk-balloon";
+import { Card } from 'react-native-paper'
 import MapView from 'react-native-maps';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
-
 import MapViewDirections from 'react-native-maps-directions';
 import config from "../config/index.json";
 
@@ -17,11 +12,7 @@ import config from "../config/index.json";
 const MinhasOfertasv2 = () => {
 
   const router = useRouter();
-  const LeftContent = props => <Image source={require("../../assets/images/alexandre.png")} style = {styles.cardProfiles} resizeMode={'center'} />
-  const LeftContent1 = props => <Image source={require("../../assets/images/mulher1.jpeg")} style = {styles.cardProfiles} resizeMode={'center'} />
-  const LeftContent2 = props => <Image source={require("../../assets/images/homem1.jpeg")} style = {styles.cardProfiles} resizeMode={'center'}/>
-  const LeftContent3 = props => <Image source={require("../../assets/images/deusa.jpeg")} style = {styles.cardProfiles} resizeMode={'center'}/>
-
+  
   const [showother, setShowother] = useState(false);
   const [destination, setDestination] = useState(null);
   const [startLocal, setstartLocal] = useState('');

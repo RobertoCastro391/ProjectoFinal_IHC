@@ -3,21 +3,17 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 import styles from "./account_Style";
 
-
-
 const Account = () => {
   const router = useRouter();
 
   return (
     <View>
-      
-      
+
       <View style = {{ flex: 0, alignItems: 'flex-start', marginTop:20 }} >
         <TouchableOpacity onPress={() => router.back()}>
           <Text style = { styles.VoltarButton }>Voltar</Text>
         </TouchableOpacity>
       </View>
-          
       
       <View style={{ alignItems: 'center', marginTop: 10 }}>
         <Text style={styles.headerTitle}>Informações de Conta</Text>
@@ -25,7 +21,6 @@ const Account = () => {
       
       <View style = {styles.header} >
         <Image source={require("../../assets/images/rita.jpg")} style = {styles.cardProfiles}/>
-        
       </View>
 
       <View>

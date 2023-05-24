@@ -3,14 +3,12 @@ import { View, Text, TouchableOpacity, Image} from "react-native";
 import { useRouter } from "expo-router";
 import styles from "./message_Style";
 
-
-
 const MessagePage = () => {
   const router = useRouter();
 
   return (
     <View>
-      
+
       <View style = {styles.header} >
         <View style = {{ flex: 0, alignItems: 'flex-start' }} >
             <TouchableOpacity onPress={() => router.back()}>
@@ -52,8 +50,6 @@ const MessagePage = () => {
         </TouchableOpacity>
       </View>
     </View>
-
-    
   );
 }
 

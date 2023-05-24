@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from "expo-router";
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-
 import styles from "./LogIn_style";
-
 
 const LogIn = () => {
   

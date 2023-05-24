@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, Button, PermissionsAndroid } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useRouter } from "expo-router";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import MapView from 'react-native-maps';
@@ -9,7 +9,6 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import config from "../config/index.json";
 import MapViewDirections from 'react-native-maps-directions';
 import styles from "./createoffer_Style";
-import { set } from 'react-native-reanimated';
 
 const CreateOffer = () => {
   
