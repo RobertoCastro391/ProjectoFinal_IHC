@@ -154,7 +154,7 @@ const CriarConta = () => {
                 style={styles.searchInput}
                 placeholder="Apelido"
                 value={apelido}
-                onChangeText={apelido}
+                onChangeText={setApelido}
               />
           </View>
         </View>
